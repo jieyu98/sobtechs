@@ -46,7 +46,7 @@
 				</a>
 			</header>
 			<!---->
-			<div class="row mb-4">
+			<div class="row mb-4 border-bottom">
 				<div class="col-sm-12 pb-3">
 					<h5>Cube Tiering Probability</h5>
 				</div>
@@ -63,7 +63,7 @@
 						<tbody>
 							<tr>
 								<th scope="row">
-									<img src="assets/img/cubes/suspicious_cube.png"/>
+									<img src="assets/img/cubes/suspicious_cube.png" />
 								</th>
 								<td>0.99% (1 in 101)</td>
 								<td>-</td>
@@ -71,7 +71,7 @@
 							</tr>
 							<tr>
 								<th scope="row">
-									<img src="assets/img/cubes/yellow_cube.png"/>
+									<img src="assets/img/cubes/yellow_cube.png" />
 								</th>
 								<td>4.7619% (1 in 21)</td>
 								<td>1.1857% (1 in 84.9666)</td>
@@ -79,7 +79,7 @@
 							</tr>
 							<tr>
 								<th scope="row">
-									<img src="assets/img/cubes/purple_cube.png"/>
+									<img src="assets/img/cubes/purple_cube.png" />
 								</th>
 								<td>7.9994% (1 in 12.5008)</td>
 								<td>1.6958% (1 in 58.9666)</td>
@@ -87,7 +87,7 @@
 							</tr>
 							<tr>
 								<th scope="row">
-									<img src="assets/img/cubes/red_cube.png"/>
+									<img src="assets/img/cubes/red_cube.png" />
 								</th>
 								<td>6%</td>
 								<td>1.8%</td>
@@ -95,7 +95,7 @@
 							</tr>
 							<tr>
 								<th scope="row">
-									<img src="assets/img/cubes/black_cube.png"/>
+									<img src="assets/img/cubes/black_cube.png" />
 								</th>
 								<td>15%</td>
 								<td>3.5%</td>
@@ -103,7 +103,7 @@
 							</tr>
 							<tr>
 								<th scope="row">
-									<img src="assets/img/cubes/additional_potential_cube.png"/>
+									<img src="assets/img/cubes/additional_potential_cube.png" />
 								</th>
 								<td>4.7619% (1 in 21)</td>
 								<td>1.9607% (1 in 51)</td>
@@ -111,13 +111,58 @@
 							</tr>
 						</tbody>
 					</table>
-					<small>Source: https://strategywiki.org/wiki/MapleStory/Potential_System</small>
+					<div class="mb-4">
+						<small>Source: https://strategywiki.org/wiki/MapleStory/Potential_System</small>
+					</div>
 				</div>
 
 			</div>
 			<!---->
-			<div>
-				<h5>Will I Tier?</h5>
+			<div class="row">
+				<div class="col-sm-12 pb-3">
+					<h5>Will I Tier?</h5>
+				</div>
+				<div class="col-sm-12">
+					<form>
+						<div class="form-group row">
+							<div class="col-sm-12 col-md-4">
+								<label for="exampleFormControlSelect1">Current Tier</label>
+								<select class="form-control" id="exampleFormControlSelect1">
+									<option>Rare</option>
+									<option>Epic</option>
+									<option>Unique</option>
+									<option>Legendary</option>
+								</select>
+							</div>
+							<div class="col-sm-12 col-md-4">
+								<label for="exampleFormControlSelect1">Desired Tier</label>
+								<select class="form-control" id="exampleFormControlSelect1">
+									<option>Rare</option>
+									<option>Epic</option>
+									<option>Unique</option>
+									<option>Legendary</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-12 col-md-4">
+								<label for="exampleFormControlSelect1">Cube</label>
+								<select class="form-control" id="exampleFormControlSelect1">
+									<option>Suspicious</option>
+									<option>Yellow</option>
+									<option>Purple</option>
+									<option>Red</option>
+									<option>Black</option>
+									<option>Additional</option>
+								</select>
+							</div>
+							<div class="col-sm-12 col-md-4">
+								<label for="exampleFormControlSelect1">Number of Cubes</label>
+								<input type="number" class="form-control" id="noOfCubes" value="10">
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</main>
