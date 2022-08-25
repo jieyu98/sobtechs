@@ -4,17 +4,22 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-    var tiering_matrix = [
-        [0.0099, 0, 0, 0], // Suspicious 0 
-        [0.047619, 0.011857, 0, 0], // Yellow 1
-        [0.079994, 0.016958, 0.001996, 0], // Purple 2
-        [0.06, 0.018, 0.003, 0], // Red 3
-        [0.15, 0.035, 0.01, 0], // Black 4
-        [0.047619, 0.019607, 0.004975, 0], // Additional 5
-        [0.3, 0.2, 0.1, 0] // Test 6
-    ];
-
     $("#calculate-btn").click(function () {
+        var tiering_matrix = [
+            [0.0099, 0, 0, 0], // Suspicious 0 
+            [0.047619, 0.011857, 0, 0], // Yellow 1
+            [0.079994, 0.016958, 0.001996, 0], // Purple 2
+            [0.06, 0.018, 0.003, 0], // Red 3
+            [0.15, 0.035, 0.01, 0], // Black 4
+            [0.047619, 0.019607, 0.004975, 0], // Additional 5
+            [0.3, 0.2, 0.1, 0] // Test 6
+        ];
+        
+        // Check if DMT is checked
+        if($("#DMT").is(':checked')) {
+            tiering_matrix = math.multiply(tiering_matrix, 2);
+        }
+
         var current_tier = $("#currentTierSelect").val();
         var desired_tier = $("#desiredTierSelect").val();
 
