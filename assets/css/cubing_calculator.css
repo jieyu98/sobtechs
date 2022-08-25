@@ -7,6 +7,35 @@
     background-size: cover;
     top: 0;
     z-index: -100;
-    background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(../img/backgrounds/cubing.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/backgrounds/cubing.png);
     overflow: scroll;
+}
+
+.btn-cube {
+    background-color: #aacc22;
+}
+
+.btn-cube span {
+    color: white;
+    text-shadow:
+        -1px -1px 0 #779922,
+        1px -1px 0 #779922,
+        -1px 1px 0 #779922,
+        1px 1px 0 #779922;
+}
+
+.results-block {
+    margin: 10px;
+    background-color: #66563d;
+    border: 3px solid #3f331d;
+    border-radius: 10px;
+    box-shadow: 0 30px 40px rgba(0,0,0,.1);
+    padding: 20px;
+}
+
+.custom-border {
+    padding: 4px;
+    background-color: #4b4231;
+    border: 3px solid #312413;
+    border-radius: 10px;
 }
