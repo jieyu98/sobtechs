@@ -42,7 +42,7 @@
 		<div class="container py-4">
 			<header class="pb-3 mb-4">
 				<a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-					<span class="fs-4" style="color: white;">Cubing Calculator</span>
+					<span class="fs-4" style="color: white;">Sob's Cubing Calculator</span>
 				</a>
 			</header>
 			<!---->
@@ -171,59 +171,62 @@
 				<div class="col-sm-12 pb-3">
 					<h5>Will I Tier?</h5>
 				</div>
+				<div class="col-sm-12 mb-4">
+					<div class="custom-border">
+						<div class="results-block">
+							Chance to reach desired tier: 
+							<strong><p id="tierChance">10%</p></strong>
+							In 1000 simulations, you achieved your desired tier:
+							<strong><p>WORK IN PROGRESS</p></strong>
+						</div>
+					</div>
+				</div>
 				<div class="col-sm-12">
-					<form>
+					<form id="cubing-form">
 						<div class="form-group row">
 							<div class="col-sm-12 col-md-4">
-								<label for="exampleFormControlSelect1">Current Tier</label>
-								<select class="form-control" id="exampleFormControlSelect1">
-									<option>Rare</option>
-									<option>Epic</option>
-									<option>Unique</option>
-									<option>Legendary</option>
+								<label for="currentTierSelect">Current Tier</label>
+								<select class="form-control" id="currentTierSelect">
+									<option value="0">Rare</option>
+									<option value="1">Epic</option>
+									<option value="2">Unique</option>
+									<option value="3">Legendary</option>
 								</select>
 							</div>
 							<div class="col-sm-12 col-md-4">
-								<label for="exampleFormControlSelect1">Desired Tier</label>
-								<select class="form-control" id="exampleFormControlSelect1">
-									<option>Rare</option>
-									<option>Epic</option>
-									<option>Unique</option>
-									<option>Legendary</option>
+								<label for="desiredTierSelect">Desired Tier</label>
+								<select class="form-control" id="desiredTierSelect">
+									<option value="0">Rare</option>
+									<option value="1">Epic</option>
+									<option value="2">Unique</option>
+									<option value="3">Legendary</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-12 col-md-4">
-								<label for="exampleFormControlSelect1">Cube</label>
-								<select class="form-control" id="exampleFormControlSelect1">
-									<option>Suspicious</option>
-									<option>Yellow</option>
-									<option>Purple</option>
-									<option>Red</option>
-									<option>Black</option>
-									<option>Additional</option>
+								<label for="cubeSelect">Cube</label>
+								<select class="form-control" id="cubeSelect">
+									<option value="0">Suspicious</option>
+									<option value="1">Yellow</option>
+									<option value="2">Purple</option>
+									<option value="3">Red</option>
+									<option value="4">Black</option>
+									<option value="5">Additional</option>
+									<option value="6">Sob Cube</option>
 								</select>
 							</div>
 							<div class="col-sm-12 col-md-4">
-								<label for="exampleFormControlSelect1">Number of Cubes</label>
+								<label for="noOfCubes">Number of Cubes</label>
 								<input type="number" class="form-control" id="noOfCubes" value="10">
 							</div>
 						</div>
-						<button type="submit" class="btn btn-cube">
+						<button type="submit" class="btn btn-cube" id="calculate-btn">
 							<span>Calculate</span>
 						</button>
 					</form>
 				</div>
-				<div class="col-sm-12 mt-4">
-					<div class="custom-border">
-						<div class="results-block pb-5">
-							Chance to tier: <strong>10%</strong>
-							<br/>
-							In 1000 simulations, you achieved your desired tier <strong>100 times</strong>.
-						</div>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</main>
@@ -237,6 +240,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.1.0/math.js" integrity="sha512-I3BR04+2bI75SNyY+c6cJWCUuseVbX1Zn952KS2Lw6+VKuZSA4tXkX5Py+T8N2I9SMT2+iQkE6eSISbhNxBMmw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="assets/js/cubing.js"></script>
 </body>
 
 </html>
