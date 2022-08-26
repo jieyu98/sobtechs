@@ -12,9 +12,9 @@ $(document).ready(function () {
             [0.06, 0.018, 0.003, 0], // Red 3
             [0.15, 0.035, 0.01, 0], // Black 4
             [0.047619, 0.019607, 0.004975, 0], // Additional 5
-            [0.3, 0.2, 0.1, 0] // Test 6
+            [1, 1, 1, 0] // Test 6
         ];
-        
+
         // Check if DMT is checked
         if($("#DMT").is(':checked')) {
             tiering_matrix = math.multiply(tiering_matrix, 2);
@@ -55,12 +55,33 @@ $(document).ready(function () {
             }
         }
         
-        // Markov Chain (Raise matrix to the power of number of cubes)
+        // Raise matrix to the power of number of cubes
         result_matrix = math.pow(transition_matrix, no_of_cubes);
 
         result_tier_chance = math.round(result_matrix[current_tier][desired_tier] * 100 * 100) / 100;
 
         $('#tierChance').text(result_tier_chance+'%');
+
+        // Display result matrix
+        if ($("#transitionMatrix").hasClass("d-none")) {
+            $("#transitionMatrix").removeClass("d-none");
+            $("#transitionMatrix").addClass("d-block");
+        }
+
+        for (var i = 0; i < 4; i++) {
+            for (var j = 0; j < 4; j++) {
+                $('#'+i+j).text(math.round(result_matrix[i][j] * 100 * 100) / 100 + '%');
+
+                // Remove previous highlight if any
+                if ($('#'+i+j).hasClass("table-success"))
+                    $('#'+i+j).removeClass("table-success");
+            }
+        }
+
+        // Highlight cell
+        $('#'+current_tier+desired_tier).addClass("table-success");
+
+        $('#trials').text(no_of_cubes);
         
     });
 })

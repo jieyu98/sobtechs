@@ -38,6 +38,7 @@ input[type="number"] {
 
 .btn-cube {
     background-color: #aacc22;
+    padding: 1px 15px;
 }
 
 .btn-cube span {
@@ -63,4 +64,12 @@ input[type="number"] {
     background-color: #4b4231;
     border: 3px solid #312413;
     border-radius: 10px;
+}
+
+#markov-table {
+    color: #495057;
+}
+
+caption {
+    color: white;
 }
