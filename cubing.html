@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="generator" content="Hugo 0.84.0">
-	<title>Sob's Cubing Calculator</title>
+	<title>SOBTECHS | Cubing </title>
 
 	<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/jumbotron/">
 
@@ -19,32 +19,38 @@
 
 	<!-- Custom Page CSS -->
 	<link href="assets/css/cubing_calculator.css" rel="stylesheet">
-
-	<style>
-		.bd-placeholder-img {
-			font-size: 1.125rem;
-			text-anchor: middle;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			user-select: none;
-		}
-
-		@media (min-width: 768px) {
-			.bd-placeholder-img-lg {
-				font-size: 3.5rem;
-			}
-		}
-	</style>
 </head>
 
 <body>
 	<main class="background">
+		<nav class="container navbar navbar-expand-lg navbar-dark">
+			<a class="navbar-brand" href="index.html">
+				<img src="assets/img/others/logo_with_name.png" width="80" height="80" alt="">
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+				aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown active">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+							Maplestory
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="#">Cubing</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</nav>
 		<div class="container py-4">
-			<header class="pb-3 mb-4">
+			<!-- <header class="pb-3 mb-4">
 				<a href="/" class="d-flex align-items-center text-dark text-decoration-none">
 					<span class="fs-4" style="color: white;">Sob's Cubing Calculator</span>
 				</a>
-			</header>
+			</header> -->
 			<!---->
 			<div class="row mb-4 border-bottom">
 				<div class="col-sm-12 pb-3">
@@ -169,7 +175,7 @@
 			<!---->
 			<div class="row mb-4 pb-4 border-bottom">
 				<div class="col-sm-12 pb-3">
-					<h5>Will I Tier?</h5>
+					<h5>Chance to Tier</h5>
 				</div>
 				<div class="col-sm-12">
 					<form id="cubing-form">
@@ -239,7 +245,8 @@
 				<div class="col-sm-12 col-md-7 d-none table-responsive" id="transitionMatrix">
 					<h6>Transition Matrix (After <span id="trials">20</span> trials)</h6>
 					<table class="table table-bordered table-light mb-0" id="markov-table">
-						<caption class="pb-0">First column: current tier. First row: desired tier. Computed using Markov chain.</caption>
+						<caption class="pb-0">First column: current tier. First row: desired tier. Computed using Markov
+							chain.</caption>
 						<thead>
 							<tr>
 								<th scope="col" style="width: 20%;">#</th>
@@ -275,8 +282,8 @@
 								<th scope="row">L</th>
 								<td id="30">10%</td>
 								<td id="31">10%</td>
-								<td	id="32">10%</td>
-								<td	id="33">10%</td>
+								<td id="32">10%</td>
+								<td id="33">10%</td>
 							</tr>
 						</tbody>
 					</table>
