@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="generator" content="Hugo 0.84.0">
+	<title>SOBTECHS | Spell Tracing </title>
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+	<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/jumbotron/">
+
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!-- Custom CSS -->
+	<link href="assets/css/main.css" rel="stylesheet">
+
+	<!-- Custom Page CSS -->
+	<link href="assets/css/spell_tracing.css" rel="stylesheet">
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117152529-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-117152529-1');
+	</script> -->
+</head>
+
+<body>
+	<main class="background">
+		<nav class="container navbar navbar-expand-lg navbar-dark">
+			<a class="navbar-brand" href="index.html">
+				<img src="assets/img/others/logo_with_name.png" width="80" height="80" alt="">
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+				aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown active">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+							Maplestory
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="cubing.html">Cubing</a>
+							<a class="dropdown-item" href="#">Spell Tracing</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<div class="container py-4">
+			<!-- <header class="pb-3 mb-4">
+				<a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+					<span class="fs-4" style="color: white;">Sob's Cubing Calculator</span>
+				</a>
+			</header> -->
+			<!---->
+			<div class="row mb-4 pb-4 border-bottom">
+				<div class="col-sm-12 pb-3">
+					<h5>Spell Trace Calculator</h5>
+				</div>
+				<div class="col-sm-12">
+					<form id="cubing-form">
+						<!---->
+						<div class="form-group row pb-3">
+							<div class="col-sm-12">
+								<h6>Equipment Information</h6>
+							</div>
+							<div class="col-sm-12 col-md-4">
+								<label for="noOfAvailSlots">Total Number of Slots</label>
+								<input type="number" class="form-control" id="noOfAvailSlots" value="10">
+							</div>
+							<div class="col-sm-12 col-md-4">
+								<label for="noOfSuccess">No. of Successful Enhancements</label>
+								<input type="number" class="form-control" id="noOfAvailSlots" value="0">
+							</div>
+							<div class="col-sm-12 col-md-4">
+								<label for="noOfFails">No. of Failed Enhancements</label>
+								<input type="number" class="form-control" id="noOfAvailSlots" value="0">
+							</div>
+						</div>
+						<!---->
+						<div class="form-group row">
+							<div class="col-sm-12">
+								<h6>Enhancement Options</h6>
+							</div>
+							<div class="col-sm-12 col-md-4">
+								<label for="noOfAvailSlots">Spell Trace Success Rate</label>
+								<select class="form-control" id="cubeSelect">
+									<option value="0">15%</option>
+									<option value="1">30%</option>
+									<option value="2">70%</option>
+									<option value="3">100%</option>
+								</select>
+							</div>
+							<div class="col-sm-12 col-md-4">
+								<label for="noOfFails">Clean Slate Scroll Type</label>
+								<select class="form-control" id="cubeSelect">
+									<option value="0">10% (From Spell Trace)</option>
+									<option value="1">1% (Normal Scroll)</option>
+									<option value="2">3% (Normal Scroll)</option>
+									<option value="3">5% (Normal Scroll)</option>
+									<option value="3">10% (Normal Scroll)</option>
+									<option value="3">20% (Normal Scroll)</option>
+								</select>
+							</div>
+							<div class="col-sm-12 col-md-4">
+								<label for="noOfSuccess">Innocence Scroll Type</label>
+								<select class="form-control" id="cubeSelect">
+									<option value="0">10% (From Spell Trace)</option>
+									<option value="1">1% (Normal Scroll)</option>
+									<option value="2">3% (Normal Scroll)</option>
+									<option value="3">5% (Normal Scroll)</option>
+									<option value="3">10% (Normal Scroll)</option>
+									<option value="3">20% (Normal Scroll)</option>
+								</select>
+							</div>
+						</div>
+						<!---->
+						<div class="form-group row">
+							<div class="col-sm-12 col-md-4">
+								<div class="form-check" id="dmt-form">
+									<input class="form-check-input" type="checkbox" value="" id="DMT">
+									<label class="form-check-label" for="DMT">
+										Spell Trace Fever
+									</label>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="col-sm-12 mb-4">
+					<div class="custom-border">
+						<div class="results-block" style="overflow: hidden;">
+							Chance to reach desired tier:
+							<strong>
+								<p id="tierChance">-</p>
+							</strong>
+							<button type="submit" class="btn btn-cube btn-sm float-right" id="calculate-btn">
+								<span>Calculate</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-7 d-none table-responsive" id="transitionMatrix">
+					<h6>Transition Matrix (After <span id="trials">20</span> trials)</h6>
+					<table class="table table-bordered table-light mb-0" id="markov-table">
+						<thead>
+							<tr>
+								<th scope="col" style="width: 20%;">#</th>
+								<th scope="col" style="width: 20%;">R</th>
+								<th scope="col" style="width: 20%;">E</th>
+								<th scope="col" style="width: 20%;">U</th>
+								<th scope="col" style="width: 20%;">L</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">R</th>
+								<td id="00">10%</td>
+								<td id="01">10%</td>
+								<td id="02">10%</td>
+								<td id="03">10%</td>
+							</tr>
+							<tr>
+								<th scope="row">E</th>
+								<td id="10">10%</td>
+								<td id="11">10%</td>
+								<td id="12">10%</td>
+								<td id="13">10%</td>
+							</tr>
+							<tr>
+								<th scope="row">U</th>
+								<td id="20">10%</td>
+								<td id="21">10%</td>
+								<td id="22">10%</td>
+								<td id="23">10%</td>
+							</tr>
+							<tr>
+								<th scope="row">L</th>
+								<td id="30">10%</td>
+								<td id="31">10%</td>
+								<td id="32">10%</td>
+								<td id="33">10%</td>
+							</tr>
+						</tbody>
+					</table>
+					<small>Row: Current tier. Column: Desired tier. Computed using Markov
+						chain.</small>
+				</div>
+			</div>
+			<!---->
+			<div>
+				<img class="img-responsive mx-auto d-block mb-2" src="assets/img/others/me.png" />
+				<small>
+					<p class="text-center">
+						Made by SobRock, Aquila (MapleSEA)<br />
+						© SOBTECHS 2022
+					</p>
+				</small>
+
+			</div>
+		</div>
+	</main>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.1.0/math.js"
+		integrity="sha512-I3BR04+2bI75SNyY+c6cJWCUuseVbX1Zn952KS2Lw6+VKuZSA4tXkX5Py+T8N2I9SMT2+iQkE6eSISbhNxBMmw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="assets/js/cubing.js"></script>
+</body>
+
+</html>
