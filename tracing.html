@@ -63,80 +63,121 @@
 			</div>
 		</nav>
 		<div class="container py-4">
-			<!-- <header class="pb-3 mb-4">
-				<a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-					<span class="fs-4" style="color: white;">Sob's Cubing Calculator</span>
-				</a>
-			</header> -->
 			<!---->
 			<div class="row mb-4 pb-4 border-bottom">
 				<div class="col-sm-12 pb-3">
 					<h5>Spell Trace Calculator</h5>
 				</div>
 				<div class="col-sm-12">
-					<form id="cubing-form">
-						<!---->
+					<form id="tracing-form">
+						<!-- Equipment Information -->
 						<div class="form-group row pb-3">
 							<div class="col-sm-12">
 								<h6>Equipment Information</h6>
 							</div>
 							<div class="col-sm-12 col-md-4">
-								<label for="noOfAvailSlots">Total Number of Slots</label>
-								<input type="number" class="form-control" id="noOfAvailSlots" value="10">
+								<label for="totalSlots">Total Number of Slots</label>
+								<input type="number" class="form-control" id="totalSlots" value="10">
 							</div>
 							<div class="col-sm-12 col-md-4">
 								<label for="noOfSuccess">No. of Successful Enhancements</label>
-								<input type="number" class="form-control" id="noOfAvailSlots" value="0">
+								<input type="number" class="form-control" id="noOfSuccess" value="0">
 							</div>
 							<div class="col-sm-12 col-md-4">
 								<label for="noOfFails">No. of Failed Enhancements</label>
-								<input type="number" class="form-control" id="noOfAvailSlots" value="0">
+								<input type="number" class="form-control" id="noOfFails" value="0">
 							</div>
 						</div>
-						<!---->
-						<div class="form-group row">
+						<!-- Enhancement Options-->
+						<div class="form-group row pb-3">
 							<div class="col-sm-12">
 								<h6>Enhancement Options</h6>
 							</div>
 							<div class="col-sm-12 col-md-4">
-								<label for="noOfAvailSlots">Spell Trace Success Rate</label>
-								<select class="form-control" id="cubeSelect">
-									<option value="0">15%</option>
-									<option value="1">30%</option>
-									<option value="2">70%</option>
-									<option value="3">100%</option>
+								<label for="successRate">Spell Trace Success Rate</label>
+								<select class="form-control" id="successRate">
+									<option value="15">15%</option>
+									<option value="30">30%</option>
+									<option value="70">70%</option>
+									<option value="100">100%</option>
 								</select>
 							</div>
 							<div class="col-sm-12 col-md-4">
-								<label for="noOfFails">Clean Slate Scroll Type</label>
-								<select class="form-control" id="cubeSelect">
-									<option value="0">10% (From Spell Trace)</option>
+								<label for="traceCost">Spell Trace Cost per Enhancement</label>
+								<input type="number" class="form-control" id="traceCost" value="1350">
+							</div>
+							<div class="col-sm-12 col-md-4">
+								<label for="innoTrigger">Use Inno Scroll Once Fail Count Reaches</label>
+								<input type="number" class="form-control" id="innoTrigger" value="5">
+							</div>
+							<div class="col-sm-12 col-md-4">
+								<label for="cssType">Clean Slate Scroll Type</label>
+								<select class="form-control" id="cssType">
+									<option value="0">5% (From Spell Trace)</option>
 									<option value="1">1% (Normal Scroll)</option>
-									<option value="2">3% (Normal Scroll)</option>
-									<option value="3">5% (Normal Scroll)</option>
-									<option value="3">10% (Normal Scroll)</option>
-									<option value="3">20% (Normal Scroll)</option>
+									<option value="3">3% (Normal Scroll)</option>
+									<option value="5">5% (Normal Scroll)</option>
+									<option value="10">10% (Normal Scroll)</option>
+									<option value="20">20% (Normal Scroll)</option>
 								</select>
 							</div>
 							<div class="col-sm-12 col-md-4">
-								<label for="noOfSuccess">Innocence Scroll Type</label>
-								<select class="form-control" id="cubeSelect">
-									<option value="0">10% (From Spell Trace)</option>
-									<option value="1">1% (Normal Scroll)</option>
-									<option value="2">3% (Normal Scroll)</option>
-									<option value="3">5% (Normal Scroll)</option>
-									<option value="3">10% (Normal Scroll)</option>
-									<option value="3">20% (Normal Scroll)</option>
+								<label for="innoType">Innocence Scroll Type</label>
+								<select class="form-control" id="innoType">
+									<option value="30">30% (From Spell Trace)</option>
+									<option value="20">20% (Normal Scroll)</option>
+									<option value="40">40% (Normal Scroll)</option>
+									<option value="50">50% (Normal Scroll)</option>
+									<option value="60">60% (Normal Scroll)</option>
+									<option value="70">70% (Normal Scroll)</option>
 								</select>
 							</div>
 						</div>
-						<!---->
+						<!-- Additional Information -->
 						<div class="form-group row">
+							<div class="col-sm-12">
+								<h6>Additional Information</h6>
+							</div>
 							<div class="col-sm-12 col-md-4">
-								<div class="form-check" id="dmt-form">
-									<input class="form-check-input" type="checkbox" value="" id="DMT">
-									<label class="form-check-label" for="DMT">
+								<label for="dilliLvl">Dilligence Level</label>
+								<input type="number" class="form-control" id="dilliLvl" value="100">
+							</div>
+							<div class="col-sm-12 col-md-4">
+								<label for="guildEnhancementLvl">Guild Enhancement Mastery Level</label>
+								<select class="form-control" id="guildEnhancementLvl">
+									<option value="0">Level 0 (+0%)</option>
+									<option value="1">Level 1 (+1%)</option>
+									<option value="2">Level 2 (+2%)</option>
+									<option value="3">Level 3 (+3%)</option>
+									<option value="4" selected>Level 4 (+4%)</option>
+								</select>
+							</div>
+							<div class="col-sm-12 col-md-4">
+								<label for="guildSalvationLvl">Guild Upgrade Salvation Level</label>
+								<select class="form-control" id="guildSalvationLvl">
+									<option value="0">Level 0 (0%)</option>
+									<option value="1">Level 1 (1%)</option>
+									<option value="2">Level 2 (2%)</option>
+									<option value="3">Level 3 (3%)</option>
+									<option value="4" selected>Level 4 (4%)</option>
+								</select>
+							</div>
+						</div>
+						<!-- Events -->
+						<div class="form-group row pb-3">
+							<div class="col-sm-12">
+								<div class="form-check" id="fever-form">
+									<input class="form-check-input" type="checkbox" value="" id="fever">
+									<label class="form-check-label" for="fever">
 										Spell Trace Fever
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-12 col">
+								<div class="form-check" id="discount-form">
+									<input class="form-check-input" type="checkbox" value="" id="discount">
+									<label class="form-check-label" for="discount">
+										50% off Spell Trace Enhancement Cost
 									</label>
 								</div>
 							</div>
@@ -146,7 +187,7 @@
 				<div class="col-sm-12 mb-4">
 					<div class="custom-border">
 						<div class="results-block" style="overflow: hidden;">
-							Chance to reach desired tier:
+							Simulation Results:
 							<strong>
 								<p id="tierChance">-</p>
 							</strong>
@@ -155,52 +196,6 @@
 							</button>
 						</div>
 					</div>
-				</div>
-				<div class="col-sm-12 col-md-7 d-none table-responsive" id="transitionMatrix">
-					<h6>Transition Matrix (After <span id="trials">20</span> trials)</h6>
-					<table class="table table-bordered table-light mb-0" id="markov-table">
-						<thead>
-							<tr>
-								<th scope="col" style="width: 20%;">#</th>
-								<th scope="col" style="width: 20%;">R</th>
-								<th scope="col" style="width: 20%;">E</th>
-								<th scope="col" style="width: 20%;">U</th>
-								<th scope="col" style="width: 20%;">L</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">R</th>
-								<td id="00">10%</td>
-								<td id="01">10%</td>
-								<td id="02">10%</td>
-								<td id="03">10%</td>
-							</tr>
-							<tr>
-								<th scope="row">E</th>
-								<td id="10">10%</td>
-								<td id="11">10%</td>
-								<td id="12">10%</td>
-								<td id="13">10%</td>
-							</tr>
-							<tr>
-								<th scope="row">U</th>
-								<td id="20">10%</td>
-								<td id="21">10%</td>
-								<td id="22">10%</td>
-								<td id="23">10%</td>
-							</tr>
-							<tr>
-								<th scope="row">L</th>
-								<td id="30">10%</td>
-								<td id="31">10%</td>
-								<td id="32">10%</td>
-								<td id="33">10%</td>
-							</tr>
-						</tbody>
-					</table>
-					<small>Row: Current tier. Column: Desired tier. Computed using Markov
-						chain.</small>
 				</div>
 			</div>
 			<!---->
@@ -229,7 +224,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.1.0/math.js"
 		integrity="sha512-I3BR04+2bI75SNyY+c6cJWCUuseVbX1Zn952KS2Lw6+VKuZSA4tXkX5Py+T8N2I9SMT2+iQkE6eSISbhNxBMmw=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script src="assets/js/cubing.js"></script>
+	<script src="assets/js/tracing.js"></script>
 </body>
 
 </html>

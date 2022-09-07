@@ -32,7 +32,7 @@ input[type="number"] {
     background-size: cover;
     top: 0;
     z-index: -100;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/backgrounds/tracing.jpeg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../img/backgrounds/tracing.jpeg);
     overflow: scroll;
 }
 
