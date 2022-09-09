@@ -5,7 +5,7 @@ $(document).ready(function () {
     });
 
     $("#calculate-btn").click(function () {
-        // Trivial check
+        // Trivial checks
 
         // Calculate trace success rate
         var base_rate = $("#successRate").val();
@@ -23,6 +23,11 @@ $(document).ready(function () {
         }
 
         var dilli_lvl = $("#dilliLvl").val();
+        if (dilli_lvl > 100 || dilli_lvl < 0) {
+            alert("Please enter a valid dilligence level.");
+            return;
+        }
+
         var dilli_bonus = math.round(dilli_lvl/10);
         var guild_bonus_1 = $("#guildEnhancementLvl").val();
         var guild_bonus_2 = $("#guildSalvationLvl").val();
@@ -90,20 +95,29 @@ $(document).ready(function () {
         $('#cssRate').text(css_rate+'%');
         $('#innoRate').text(inno_rate+'%');
 
-        var total_spell_trace_count = 0;
-        var total_inno_count = 0;
-        var total_css_count = 0;
         var results;
 
         var spell_trace_cost_array = [];
         var inno_cost_array = [];
         var css_cost_array = [];
+        var meso_cost_array = [];
+
+        var cost_of_spell_trace =  $("#costOfSpellTrace").val();
+        var cost_of_inno = $("#costOfInno").val();
+        var cost_of_css = $("#costOfCSS").val();
+
+        var meso_cost;
 
         for (var i = 0; i < no_of_sims; i++) {
             results = simulate(trace_rate, css_rate, inno_rate, total_slots, success_count, fail_count, fail_count_trigger, guild_bonus_2, trace_cost, using_spell_trace_inno, using_spell_trace_css);
             spell_trace_cost_array.push(results[0]);
             inno_cost_array.push(results[1]);
             css_cost_array.push(results[2]);
+
+            // Calculate meso cost
+            meso_cost = 0;
+            meso_cost = (results[0] * cost_of_spell_trace) + (results[1] * cost_of_inno) + (results[2] * cost_of_css);
+            meso_cost_array.push(meso_cost);
         }
 
         var avg_spell_trace_count = math.mean(spell_trace_cost_array);
@@ -121,6 +135,11 @@ $(document).ready(function () {
         var median_css_count = math.median(css_cost_array);
         var min_css_count = math.min(css_cost_array);
         var max_css_count = math.max(css_cost_array);
+
+        var avg_meso_count = math.mean(meso_cost_array);
+        var median_meso_count = math.median(meso_cost_array);
+        var min_meso_count = math.min(meso_cost_array);
+        var max_meso_count = math.max(meso_cost_array);
         
 
         $('#avgTraces').text(avg_spell_trace_count.toLocaleString("en-US")+' (Roughly '+spell_trace_stacks+' stacks)');
@@ -134,6 +153,12 @@ $(document).ready(function () {
         $('#avgCSS').text(avg_css_count);
         $('#rangeCSS').text(min_css_count + ' - ' + max_css_count);
         $('#medianCSS').text(median_css_count); 
+
+        if (cost_of_spell_trace != 0) {
+            $('#avgMeso').text(avg_meso_count.toLocaleString("en-US"));
+            $('#rangeMeso').text(min_meso_count.toLocaleString("en-US") + ' - ' + max_meso_count.toLocaleString("en-US"));
+            $('#medianMeso').text(median_meso_count.toLocaleString("en-US")); 
+        }
     });
 
     // Function to test probability
