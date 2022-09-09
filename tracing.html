@@ -111,17 +111,6 @@
 								<input type="number" class="form-control" id="innoTrigger" value="5">
 							</div>
 							<div class="col-sm-12 col-md-4">
-								<label for="cssType">Clean Slate Scroll Type</label>
-								<select class="form-control" id="cssType">
-									<option value="0">5% (From Spell Trace)</option>
-									<option value="1">1% (Normal Scroll)</option>
-									<option value="3">3% (Normal Scroll)</option>
-									<option value="5">5% (Normal Scroll)</option>
-									<option value="10">10% (Normal Scroll)</option>
-									<option value="20">20% (Normal Scroll)</option>
-								</select>
-							</div>
-							<div class="col-sm-12 col-md-4">
 								<label for="innoType">Innocence Scroll Type</label>
 								<select class="form-control" id="innoType">
 									<option value="30">30% (From Spell Trace)</option>
@@ -130,6 +119,17 @@
 									<option value="50">50% (Normal Scroll)</option>
 									<option value="60">60% (Normal Scroll)</option>
 									<option value="70">70% (Normal Scroll)</option>
+								</select>
+							</div>
+							<div class="col-sm-12 col-md-4">
+								<label for="cssType">Clean Slate Scroll Type</label>
+								<select class="form-control" id="cssType">
+									<option value="0">5% (From Spell Trace)</option>
+									<option value="1">1% (Normal Scroll)</option>
+									<option value="3">3% (Normal Scroll)</option>
+									<option value="5">5% (Normal Scroll)</option>
+									<option value="10">10% (Normal Scroll)</option>
+									<option value="20">20% (Normal Scroll)</option>
 								</select>
 							</div>
 						</div>
@@ -162,6 +162,10 @@
 									<option value="4" selected>Level 4 (4%)</option>
 								</select>
 							</div>
+							<div class="col-sm-12 col-md-4">
+								<label for="noOfSims">No. of Simulation</label>
+								<input type="number" class="form-control" id="noOfSims" value="1000">
+							</div>
 						</div>
 						<!-- Events -->
 						<div class="form-group row pb-3">
@@ -188,9 +192,20 @@
 					<div class="custom-border">
 						<div class="results-block" style="overflow: hidden;">
 							Simulation Results:
-							<strong>
-								<p id="tierChance">-</p>
-							</strong>
+							<div class="pt-3">
+								<strong>Spell Trace Success Rate:</strong> <span id="traceRate">-</span>
+								<br/>
+								<strong>Clean Slate Scroll Success Rate:</strong> <span id="cssRate">-</span>
+								<br/>
+								<strong>Innocence Scroll Success Rate:</strong> <span id="innoRate">-</span>
+							</div>
+							<div class="pt-3">
+								<strong>Average Number of Spell Traces:</strong> <span id="avgTraces">-</span>
+								<br/>
+								<strong>Average Number of Innocence Scrolls:</strong> <span id="avgInno">-</span>
+								<br/>
+								<strong>Average Number of Clean Slate Scrolls:</strong> <span id="avgCSS">-</span>
+							</div>
 							<button type="submit" class="btn btn-cube btn-sm float-right" id="calculate-btn">
 								<span>Calculate</span>
 							</button>
@@ -203,7 +218,7 @@
 				<img class="img-responsive mx-auto d-block mb-2" src="assets/img/others/me.png" />
 				<small>
 					<p class="text-center">
-						Made by SobRock, Aquila (MapleSEA)<br />
+						Made by Sobful, Aquila (MapleSEA)<br />
 						© SOBTECHS 2022
 					</p>
 				</small>

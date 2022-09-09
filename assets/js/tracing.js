@@ -36,16 +36,58 @@ $(document).ready(function () {
         var inno_rate = $("#innoType").val();
         var css_type = $("#cssType").val();
         var css_rate;
+        var no_of_sims = $("#noOfSims").val();
+
+        if ($("#discount").is(':checked')) {
+            trace_cost = trace_cost/2;
+        }
 
         if(($("#fever").is(':checked')) && (inno_rate == 30)) { // Check if fever + using spell trace inno
             inno_rate = 45;
         }
 
-        if(($("#fever").is(':checked')) && (css_type == 0)) { // Check if fever + using spell trace CSS
+        if(($("#fever").is(':checked')) && (css_type == 0)) { // Fever + using spell trace CSS
             css_rate = 10;
-        } else if (css_type == 0) { // If select value == 0, we are using spell trace CSS
+        } else if (css_type == 0) { // No fever + Using spell trace CSS
             css_rate = 5; 
+        } else {
+            css_rate = css_type; // Normal CSS
         }
+
+        $('#traceRate').text(trace_rate+'% ('+base_rate+'%+'+dilli_bonus+'%+'+guild_bonus_1+'%)');
+        $('#cssRate').text(css_rate+'%');
+        $('#innoRate').text(inno_rate+'%');
+
+        var total_spell_trace_count = 0;
+        var total_inno_count = 0;
+        var total_css_count = 0;
+        var results;
+
+        for (var i = 0; i < no_of_sims; i++) {
+            results = simulate(trace_rate, css_type, css_rate, inno_rate, total_slots, success_count, fail_count, fail_count_trigger, guild_bonus_2, trace_cost);
+            total_spell_trace_count += results[0];
+            total_inno_count += results[1];
+            total_css_count += results[2];
+        }
+
+        var avg_spell_trace_count = total_spell_trace_count/no_of_sims;
+        var avg_inno_count = total_inno_count/no_of_sims;
+        var avg_css_count = total_css_count/no_of_sims;
+        var spell_trace_stacks = math.round(avg_spell_trace_count/9000, 1);
+
+        $('#avgTraces').text(avg_spell_trace_count.toLocaleString("en-US")+' (Roughly '+spell_trace_stacks+' stacks)');
+        $('#avgInno').text(avg_inno_count);
+        $('#avgCSS').text(avg_css_count);
+        
+    });
+
+    // Function to test probability
+    function probability(rate) {
+        return math.random() < (rate/100);
+    }
+
+    // Simulation function
+    function simulate(trace_rate, css_type, css_rate, inno_rate, total_slots, success_count, fail_count, fail_count_trigger, guild_bonus_2, trace_cost) {
 
         var spell_trace_count = 0;
         var inno_count = 0;
@@ -53,19 +95,16 @@ $(document).ready(function () {
 
         // Phase 1 (Trace until we are satisfied with the fail count)
         while ((total_slots - success_count - fail_count) > 0) { // Run while loop until no more slots left
-            if (probability(trace_rate)) { // Pass
+            if (probability(trace_rate)) { // Pass trace
                 spell_trace_count += +trace_cost;
                 success_count++;
             } 
-            else { // Failed
+            else { // Failed trace
                 // Guild upgrade salvation - When you fail a scroll or Spell Trace enhancement, there's a chance the upgrade count will not be consumed.
-                if (probability(guild_bonus_2)) {
-                    console.log("Saved");
-                } else {
+                if (!probability(guild_bonus_2)) {
                     fail_count++;
-                }
+                } 
 
-                
                 if (fail_count >= fail_count_trigger) { // Inno time
                     // While loop, till inno passes
                     while (1) {
@@ -73,9 +112,9 @@ $(document).ready(function () {
 
                         if (inno_rate == 30 || inno_rate == 45) {
                             if ($("#discount").is(':checked')) {
-                                spell_trace_count += 2500; // Need double check
+                                spell_trace_count += 2500; 
                             } else {
-                                spell_trace_count += 5000; // Need double check
+                                spell_trace_count += 5000;
                             }
                         }
                             
@@ -91,23 +130,25 @@ $(document).ready(function () {
             }
         }
 
-        console.log("Phase 1 results");
-        console.log(success_count);
-        console.log(fail_count);
-        console.log(spell_trace_count);
-
         // Phase 2 (CSS + Perf trace remaining)
         while (success_count != total_slots) {
             if (total_slots - success_count - fail_count > 0) { // Trace if a slot exists
-
+                if (probability(trace_rate)) {
+                    success_count++;
+                } else {
+                    if (!probability(guild_bonus_2)) {
+                        fail_count++;
+                    }
+                }
             } else { // Else apply CSS until one passes
                 while (1) {
                     css_count++;
 
-                    if(($("#discount").is(':checked')) && (css_type == 0)) {
-                        spell_trace_count += 1000;
-                    } else {
-                        spell_trace_count += 2000;
+                    if (css_type == 0) {
+                        if ($("#discount").is(':checked')) 
+                            spell_trace_count += 1000;
+                        else 
+                            spell_trace_count += 2000;
                     }
 
                     if (probability(css_rate)) { // CSS pass
@@ -118,14 +159,9 @@ $(document).ready(function () {
             }
         }
         
-    });
-
-    // Function to test probability
-    function probability(rate) {
-        return math.random() < (rate/100);
+        // Return results
+        return [spell_trace_count, inno_count, css_count];
     }
-
-    // Phase 1 
 })
 
 
