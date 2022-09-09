@@ -8,11 +8,11 @@
 	<meta name="generator" content="Hugo 0.84.0">
 	<title>SOBTECHS | Spell Tracing </title>
 	<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+	<link rel="manifest" href="assets/favicon/site.webmanifest">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
 
 	<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/jumbotron/">
 
@@ -63,10 +63,13 @@
 			</div>
 		</nav>
 		<div class="container py-4">
-			<!---->
+			<!-- Calculator -->
 			<div class="row mb-4 pb-4 border-bottom">
 				<div class="col-sm-12 pb-3">
-					<h5>Spell Trace Calculator</h5>
+					<h5>Perfect Tracing Calculator</h5>
+					<small>
+						Find out how many resources are required for you to perfect trace your equipment.
+					</small>
 				</div>
 				<div class="col-sm-12">
 					<form id="tracing-form">
@@ -89,7 +92,7 @@
 							</div>
 						</div>
 						<!-- Enhancement Options-->
-						<div class="form-group row pb-3">
+						<div class="form-group row">
 							<div class="col-sm-12">
 								<h6>Enhancement Options</h6>
 							</div>
@@ -105,20 +108,23 @@
 							<div class="col-sm-12 col-md-4">
 								<label for="traceCost">Spell Trace Cost per Enhancement</label>
 								<input type="number" class="form-control" id="traceCost" value="1350">
+								<small class="form-text">Do not include discounts from 50% off event (if any).</small>
 							</div>
 							<div class="col-sm-12 col-md-4">
 								<label for="innoTrigger">Use Inno Scroll Once Fail Count Reaches</label>
 								<input type="number" class="form-control" id="innoTrigger" value="5">
 							</div>
+						</div>
+						<div class="form-group row pb-3">
 							<div class="col-sm-12 col-md-4">
 								<label for="innoType">Innocence Scroll Type</label>
 								<select class="form-control" id="innoType">
-									<option value="30">30% (From Spell Trace)</option>
-									<option value="20">20% (Normal Scroll)</option>
-									<option value="40">40% (Normal Scroll)</option>
-									<option value="50">50% (Normal Scroll)</option>
-									<option value="60">60% (Normal Scroll)</option>
-									<option value="70">70% (Normal Scroll)</option>
+									<option value="0">30% (From Spell Trace)</option>
+									<option value="1">20% (Normal Scroll)</option>
+									<option value="2">40% (Normal Scroll)</option>
+									<option value="3">50% (Normal Scroll)</option>
+									<option value="4">60% (Normal Scroll)</option>
+									<option value="5">70% (Normal Scroll)</option>
 								</select>
 							</div>
 							<div class="col-sm-12 col-md-4">
@@ -126,10 +132,10 @@
 								<select class="form-control" id="cssType">
 									<option value="0">5% (From Spell Trace)</option>
 									<option value="1">1% (Normal Scroll)</option>
-									<option value="3">3% (Normal Scroll)</option>
-									<option value="5">5% (Normal Scroll)</option>
-									<option value="10">10% (Normal Scroll)</option>
-									<option value="20">20% (Normal Scroll)</option>
+									<option value="2">3% (Normal Scroll)</option>
+									<option value="3">5% (Normal Scroll)</option>
+									<option value="4">10% (Normal Scroll)</option>
+									<option value="5">20% (Normal Scroll)</option>
 								</select>
 							</div>
 						</div>
@@ -143,7 +149,7 @@
 								<input type="number" class="form-control" id="dilliLvl" value="100">
 							</div>
 							<div class="col-sm-12 col-md-4">
-								<label for="guildEnhancementLvl">Guild Enhancement Mastery Level</label>
+								<label for="guildEnhancementLvl">Guild Enhancement Mastery Skill Level</label>
 								<select class="form-control" id="guildEnhancementLvl">
 									<option value="0">Level 0 (+0%)</option>
 									<option value="1">Level 1 (+1%)</option>
@@ -153,7 +159,7 @@
 								</select>
 							</div>
 							<div class="col-sm-12 col-md-4">
-								<label for="guildSalvationLvl">Guild Upgrade Salvation Level</label>
+								<label for="guildSalvationLvl">Guild Upgrade Salvation Skill Level</label>
 								<select class="form-control" id="guildSalvationLvl">
 									<option value="0">Level 0 (0%)</option>
 									<option value="1">Level 1 (1%)</option>
@@ -162,6 +168,8 @@
 									<option value="4" selected>Level 4 (4%)</option>
 								</select>
 							</div>
+						</div>
+						<div class="form-group row">
 							<div class="col-sm-12 col-md-4">
 								<label for="noOfSims">No. of Simulation</label>
 								<input type="number" class="form-control" id="noOfSims" value="1000">
@@ -194,18 +202,51 @@
 							Simulation Results:
 							<div class="pt-3">
 								<strong>Spell Trace Success Rate:</strong> <span id="traceRate">-</span>
-								<br/>
+								<br />
 								<strong>Clean Slate Scroll Success Rate:</strong> <span id="cssRate">-</span>
-								<br/>
+								<br />
 								<strong>Innocence Scroll Success Rate:</strong> <span id="innoRate">-</span>
 							</div>
-							<div class="pt-3">
-								<strong>Average Number of Spell Traces:</strong> <span id="avgTraces">-</span>
-								<br/>
-								<strong>Average Number of Innocence Scrolls:</strong> <span id="avgInno">-</span>
-								<br/>
-								<strong>Average Number of Clean Slate Scrolls:</strong> <span id="avgCSS">-</span>
-							</div>
+							<table class="table table-bordered mt-3">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">Average</th>
+										<th scope="col">Range</th>
+										<th scope="col">Median</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row"><img src="assets/img/etc/Etc_Spell_Trace.webp" /> Spell Traces
+										</th>
+										<td id="avgTraces">-</td>
+										<td id="rangeTraces">-</td>
+										<td id="medianTraces">-</td>
+									</tr>
+									<tr>
+										<th scope="row"><img src="assets/img/use/Use_Innocence_Scroll.webp" /> Innocence
+											Scrolls</th>
+										<td id="avgInno">-</td>
+										<td id="rangeInno">-</td>
+										<td id="medianInno">-</td>
+									</tr>
+									<tr>
+										<th scope="row"><img src="assets/img/use/Use_Clean_Slate_Scroll.webp" /> Clean
+											Slate Scrolls</th>
+										<td id="avgCSS">-</td>
+										<td id="rangeCSS">-</td>
+										<td id="medianCSS">-</td>
+									</tr>
+									<tr>
+										<th scope="row"><img src="assets/img/others/Meso_Sack.webp" /> Mesos</th>
+										<td id="avgCSS">-</td>
+										<td id="rangeCSS">-</td>
+										<td id="medianCSS">-</td>
+									</tr>
+								</tbody>
+							</table>
+
 							<button type="submit" class="btn btn-cube btn-sm float-right" id="calculate-btn">
 								<span>Calculate</span>
 							</button>
@@ -213,7 +254,8 @@
 					</div>
 				</div>
 			</div>
-			<!---->
+
+			<!-- Footer -->
 			<div>
 				<img class="img-responsive mx-auto d-block mb-2" src="assets/img/others/me.png" />
 				<small>

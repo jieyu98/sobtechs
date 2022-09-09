@@ -33,25 +33,57 @@ $(document).ready(function () {
         var fail_count = $("#noOfFails").val();
         var fail_count_trigger = $("#innoTrigger").val();
         var trace_cost = $("#traceCost").val();
-        var inno_rate = $("#innoType").val();
+        var inno_type = $("#innoType").val();
+        var inno_rate;
         var css_type = $("#cssType").val();
         var css_rate;
         var no_of_sims = $("#noOfSims").val();
 
-        if ($("#discount").is(':checked')) {
+        var using_spell_trace_inno = false;
+        var using_spell_trace_css = false;
+
+        if ($("#discount").is(':checked')) { // 50% off event
             trace_cost = trace_cost/2;
         }
 
-        if(($("#fever").is(':checked')) && (inno_rate == 30)) { // Check if fever + using spell trace inno
-            inno_rate = 45;
+        // Inno rate
+        if (inno_type == 0) {
+            if ($("#fever").is(':checked'))
+                inno_rate = 40;
+            else 
+                inno_rate = 30;
+
+            using_spell_trace_inno = true;
+        } else if (inno_type == 1) {
+            inno_rate = 20;
+        } else if (inno_type == 2) {
+            inno_rate = 40;
+        } else if (inno_type == 3) {
+            inno_rate = 50;
+        } else if (inno_type == 4) {
+            inno_rate = 60;
+        } else {
+            inno_rate = 70;
         }
 
-        if(($("#fever").is(':checked')) && (css_type == 0)) { // Fever + using spell trace CSS
+        // CSS rate
+        if (css_type == 0) {
+            if ($("#fever").is(':checked'))
+                css_rate = 10;
+            else 
+                css_rate = 5;
+
+                using_spell_trace_css = true;
+        } else if (css_type == 1) {
+            css_rate = 1;
+        } else if (css_type == 2) {
+            css_rate = 3;
+        } else if (css_type == 3) {
+            css_rate = 5;
+        } else if (css_type == 4) {
             css_rate = 10;
-        } else if (css_type == 0) { // No fever + Using spell trace CSS
-            css_rate = 5; 
         } else {
-            css_rate = css_type; // Normal CSS
+            css_rate = 20;
         }
 
         $('#traceRate').text(trace_rate+'% ('+base_rate+'%+'+dilli_bonus+'%+'+guild_bonus_1+'%)');
@@ -63,22 +95,45 @@ $(document).ready(function () {
         var total_css_count = 0;
         var results;
 
+        var spell_trace_cost_array = [];
+        var inno_cost_array = [];
+        var css_cost_array = [];
+
         for (var i = 0; i < no_of_sims; i++) {
-            results = simulate(trace_rate, css_type, css_rate, inno_rate, total_slots, success_count, fail_count, fail_count_trigger, guild_bonus_2, trace_cost);
-            total_spell_trace_count += results[0];
-            total_inno_count += results[1];
-            total_css_count += results[2];
+            results = simulate(trace_rate, css_rate, inno_rate, total_slots, success_count, fail_count, fail_count_trigger, guild_bonus_2, trace_cost, using_spell_trace_inno, using_spell_trace_css);
+            spell_trace_cost_array.push(results[0]);
+            inno_cost_array.push(results[1]);
+            css_cost_array.push(results[2]);
         }
 
-        var avg_spell_trace_count = total_spell_trace_count/no_of_sims;
-        var avg_inno_count = total_inno_count/no_of_sims;
-        var avg_css_count = total_css_count/no_of_sims;
+        var avg_spell_trace_count = math.mean(spell_trace_cost_array);
+        var median_spell_trace_count = math.median(spell_trace_cost_array);
+        var min_spell_trace_count = math.min(spell_trace_cost_array);
+        var max_spell_trace_count = math.max(spell_trace_cost_array);
         var spell_trace_stacks = math.round(avg_spell_trace_count/9000, 1);
 
-        $('#avgTraces').text(avg_spell_trace_count.toLocaleString("en-US")+' (Roughly '+spell_trace_stacks+' stacks)');
-        $('#avgInno').text(avg_inno_count);
-        $('#avgCSS').text(avg_css_count);
+        var avg_inno_count = math.mean(inno_cost_array);
+        var median_inno_count = math.median(inno_cost_array);
+        var min_inno_count = math.min(inno_cost_array);
+        var max_inno_count = math.max(inno_cost_array);
         
+        var avg_css_count = math.mean(css_cost_array);
+        var median_css_count = math.median(css_cost_array);
+        var min_css_count = math.min(css_cost_array);
+        var max_css_count = math.max(css_cost_array);
+        
+
+        $('#avgTraces').text(avg_spell_trace_count.toLocaleString("en-US")+' (Roughly '+spell_trace_stacks+' stacks)');
+        $('#rangeTraces').text(min_spell_trace_count.toLocaleString("en-US") + ' - ' + max_spell_trace_count.toLocaleString("en-US"));
+        $('#medianTraces').text(median_spell_trace_count.toLocaleString("en-US"));
+
+        $('#avgInno').text(avg_inno_count);
+        $('#rangeInno').text(min_inno_count + ' - ' + max_inno_count);
+        $('#medianInno').text(median_inno_count);
+
+        $('#avgCSS').text(avg_css_count);
+        $('#rangeCSS').text(min_css_count + ' - ' + max_css_count);
+        $('#medianCSS').text(median_css_count); 
     });
 
     // Function to test probability
@@ -87,7 +142,7 @@ $(document).ready(function () {
     }
 
     // Simulation function
-    function simulate(trace_rate, css_type, css_rate, inno_rate, total_slots, success_count, fail_count, fail_count_trigger, guild_bonus_2, trace_cost) {
+    function simulate(trace_rate, css_rate, inno_rate, total_slots, success_count, fail_count, fail_count_trigger, guild_bonus_2, trace_cost, using_spell_trace_inno, using_spell_trace_css) {
 
         var spell_trace_count = 0;
         var inno_count = 0;
@@ -110,7 +165,7 @@ $(document).ready(function () {
                     while (1) {
                         inno_count++;
 
-                        if (inno_rate == 30 || inno_rate == 45) {
+                        if (using_spell_trace_inno) { // Using spell trace inno
                             if ($("#discount").is(':checked')) {
                                 spell_trace_count += 2500; 
                             } else {
@@ -144,7 +199,7 @@ $(document).ready(function () {
                 while (1) {
                     css_count++;
 
-                    if (css_type == 0) {
+                    if (using_spell_trace_css) {
                         if ($("#discount").is(':checked')) 
                             spell_trace_count += 1000;
                         else 
