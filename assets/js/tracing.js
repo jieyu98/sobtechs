@@ -54,7 +54,7 @@ $(document).ready(function () {
         // Inno rate
         if (inno_type == 0) {
             if ($("#fever").is(':checked'))
-                inno_rate = 40;
+                inno_rate = 45;
             else 
                 inno_rate = 30;
 
