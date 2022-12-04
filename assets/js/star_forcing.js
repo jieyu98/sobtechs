@@ -11,12 +11,21 @@ $(document).ready(function () {
         var current_stars = $("#currentStars").val();
         var target_stars = $("#targetStars").val();
         var total_meso_cost = 0;
+        var temp;
+        var star_catch;
+
+        // Check if star catch is enabled
+        temp = $("#starCatch").val()
+        if (temp == 0)
+            star_catch = true;
+        else
+            star_catch = false;
 
         while (current_stars != target_stars) {
             console.log("Meso cost:", raw_meso_cost(equip_level, current_stars));
             total_meso_cost += raw_meso_cost(equip_level, current_stars);
 
-            tap_res = tap(current_stars);
+            tap_res = tap(current_stars, star_catch);
 
             if (tap_res == "Pass") {
                 current_stars++;
@@ -58,14 +67,20 @@ $(document).ready(function () {
         return cost
     }
 
-    function tap(current_stars) {
-        success_rate = [95, 90, 85, 85, 80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 30, 30, 30, 30, 30, 30, 30, 3, 2, 1];
+    function tap(current_stars, star_catch) {
+        success_rate_array = [95, 90, 85, 85, 80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 30, 30, 30, 30, 30, 30, 30, 3, 2, 1];
         
-        rate = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 99, 98, 98, 97, 97, 97, 96, 96, 90, 90, 80, 70, 60]
+        rate_array = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 99, 98, 98, 97, 97, 97, 96, 96, 90, 90, 80, 70, 60]
         
-        console.log(current_stars);
+        console.log("Current stars: ", current_stars);
+        var success_rate;
 
-        if (probability(success_rate[current_stars])) { // Success
+        if (star_catch)
+            success_rate = (success_rate_array[current_stars]) * 1.05;
+        else
+            success_rate = success_rate_array[current_stars];
+
+        if (probability(success_rate)) { // Success
             return "Pass";
         } else { // Failed
             // Check if maintain, decrease, or destroy
@@ -79,7 +94,7 @@ $(document).ready(function () {
             else 
                 type_2 = true; // These types can only either decrease or destroy
 
-            if (probability(rate[current_stars])) {
+            if (probability(rate_array[current_stars])) {
                 if (type_1)
                     return "Maintain";
                 if (type_2)
