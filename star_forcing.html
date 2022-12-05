@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>SOBTECHS | Star Forcing </title>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/jumbotron/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <!-- Custom Page CSS -->
+    <link href="assets/css/star_forcing.css" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117152529-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-117152529-1');
+	</script> -->
+</head>
+
+<body>
+    <main class="background">
+        <nav class="container navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/others/logo_with_name.png" width="80" height="80" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Maplestory
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="cubing.html">Cubing</a>
+                            <a class="dropdown-item" href="tracing.html">Spell Tracing</a>
+                            <a class="dropdown-item" href="#">Star Forcing</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container py-4">
+            <div class="row mb-4 pb-4 border-bottom">
+                <div class="col-sm-12 pb-3">
+                    <h5>Star Forcing Simulator</h5>
+                    <small>For itchy hands.</small>
+                </div>
+                <div class="col-sm-12 col-md-6 offset-md-3">
+                    <div class="sf-outer-box">
+                        <span class="sim-title">EQUIPMENT ENCHANT</span>
+                        <div class="sf-inner-box">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="sim-warning sim-style-1">
+                                        <i style="color: gold;" class="fas fa-exclamation-triangle"></i> EQUIPMENT CAN BE <span style="color: gold;">DESTROYED</span> OR <SPAN style="color: gold;">LOSE LEVELS</SPAN> UPON FAILURE. 
+                                    </div>
+                                </div>
+                                <div class="col-5 pr-0">
+                                    <div class="sim-item-area">
+
+                                    </div>
+                                </div>
+                                <div class="col-7 pl-0">
+                                    <div class="sim-item-stats sim-style-1">
+
+                                    </div>
+                                </div>
+                                <div class="col-6 pr-0">
+                                    <div class="sim-star-catch-area sim-style-1">
+                                        CANCEL STAR CATCH 
+                                        <input type="checkbox" id="cancel-star-catch" name="cancel-star-catch">
+                                    </div>
+                                </div>
+                                <div class="col-6 pl-0">
+                                    <div class="sim-anti-boom-area sim-style-1">
+                                        ANTI-DESTRUCTION
+                                        <input type="checkbox" id="anti-boom" name="anti-boom">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="sim-cost-area sim-style-1">
+                                        <i class="fa-solid fa-coins mr-2" style="color: gold;"></i>
+                                        MESO COST: <span class="ml-5" id="sim-cost">100,232,123</span>
+                                    </div>
+                                </div>
+                                <div class="col-6 pr-0">
+                                    <div>
+                                        <button type="button" id="sim-enhance-btn" class="btn">
+                                            <i class="fa-solid fa-circle-plus"></i>
+                                            Enhance
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-6 pl-0">
+                                    <div>
+                                        <button type="button" id="sim-reset-btn" class="btn">
+                                            <i class="fa-solid fa-rotate-left"></i>
+                                            Reset
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4 pb-4 border-bottom">
+                <div class="col-sm-12 pb-3">
+                    <h5>Star Forcing Calculator</h5>
+                </div>
+                <div class="col-sm-12">
+                    <form id="star-forcing-form">
+                        <!-- Equipment Information -->
+                        <div class="form-group row pb-3">
+                            <div class="col-sm-12">
+                                <h6>Equipment Information</h6>
+                            </div>
+                            <div class="col-sm-12 col-md-4">
+                                <label for="itemLevel">Item Level</label>
+                                <input type="number" class="form-control" id="itemLevel" value="200">
+                            </div>
+                            <div class="col-sm-12 col-md-4">
+                                <label for="itemType">Item Type</label>
+                                <select class="form-control" id="itemType" disabled>
+                                    <option value="0">Normal</option>
+                                    <option value="1">Tyrant</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Enhancement Options -->
+                        <div class="form-group pb-3">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h6>Enhancement Options</h6>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <label for="starCatch">Star Catch</label>
+                                    <select class="form-control" id="starCatch">
+                                        <option value="0">Yes (+5% Multiplier)</option>
+                                        <option value="1">No</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <label for="safeguard">Safeguard (12-17 Stars)</label>
+                                    <select class="form-control" id="safeguard">
+                                        <option value="0">Yes</option>
+                                        <option value="1" selected>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4">
+                                    <label for="currentStars">Current Stars</label>
+                                    <input type="number" class="form-control" id="currentStars" value="0">
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <label for="targetStars">Target Stars</label>
+                                    <input type="number" class="form-control" id="targetStars" value="22">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Additional Information -->
+                        <div class="form-group pb-3">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h6>Additional Information</h6>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <label for="mvpGrade">MVP Grade</label>
+                                    <select class="form-control" id="mvpGrade">
+                                        <option value="0">None</option>
+                                        <option value="1">Silver (3% discount)</option>
+                                        <option value="2">Gold (5% discount)</option>
+                                        <option value="3">Diamond (10% discount)</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <label for="mvpGrade">Premium Service</label>
+                                    <select class="form-control" id="mvpGrade">
+                                        <option value="0">Yes (5% Discount)</option>
+                                        <option value="1">No</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <label for="recoveryCost">Cost of Item Replacement</label>
+                                    <input type="number" class="form-control" id="recoveryCost" value="0">
+                                    <small class="form-text">In case of destruction (boom).</small>
+                                </div>
+                            </div>
+                            <div class="form-check" id="save-form">
+                                <input class="form-check-input" type="checkbox" value="" id="saveInfo" checked>
+                                <label class="form-check-label" for="saveInfo">
+                                    Remember my MVP and Premium Service information
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Events -->
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <h6>Events Selection</h6>
+                            </div>
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-check" id="51015-form">
+                                    <input class="form-check-input" type="checkbox" value="" id="51015">
+                                    <label class="form-check-label" for="51015">
+                                        100% success at 5, 10, 15 stars
+                                    </label>
+                                </div>
+                                <div class="form-check" id="30Disc-form">
+                                    <input class="form-check-input" type="checkbox" value="" id="30Disc">
+                                    <label class="form-check-label" for="30Disc">
+                                        30% discount
+                                    </label>
+                                </div>
+                                <div class="form-check" id="1Plus1-form">
+                                    <input class="form-check-input" type="checkbox" value="" id="1Plus1">
+                                    <label class="form-check-label" for="1Plus1">
+                                        1+1 below 10 stars
+                                    </label>
+                                </div>
+                                <div class="form-check" id="noBoom-form">
+                                    <input class="form-check-input" type="checkbox" value="" id="noBoom">
+                                    <label class="form-check-label" for="noBoom">
+                                        No boom up to 15 stars
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="col-sm-12 mb-4">
+                    <div class="custom-border">
+                        <div class="results-block" style="overflow: hidden;">
+                            Simulation Results:
+                            <strong>
+                                <p id="tierChance">-</p>
+                            </strong>
+                            <button type="submit" class="btn btn-cube btn-sm float-right" id="calculate-btn">
+                                <span>Calculate</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-7 d-none table-responsive" id="transitionMatrix">
+                    <h6>Transition Matrix (After <span id="trials">20</span> trials)</h6>
+                    <table class="table table-bordered table-light mb-0" id="markov-table">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 20%;">#</th>
+                                <th scope="col" style="width: 20%;">R</th>
+                                <th scope="col" style="width: 20%;">E</th>
+                                <th scope="col" style="width: 20%;">U</th>
+                                <th scope="col" style="width: 20%;">L</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">R</th>
+                                <td id="00">10%</td>
+                                <td id="01">10%</td>
+                                <td id="02">10%</td>
+                                <td id="03">10%</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">E</th>
+                                <td id="10">10%</td>
+                                <td id="11">10%</td>
+                                <td id="12">10%</td>
+                                <td id="13">10%</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">U</th>
+                                <td id="20">10%</td>
+                                <td id="21">10%</td>
+                                <td id="22">10%</td>
+                                <td id="23">10%</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">L</th>
+                                <td id="30">10%</td>
+                                <td id="31">10%</td>
+                                <td id="32">10%</td>
+                                <td id="33">10%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <small>Row: Current tier. Column: Desired tier. Computed using Markov
+                        chain.</small>
+                </div>
+            </div>
+            <!---->
+            <div>
+                <img class="img-responsive mx-auto d-block mb-2" src="assets/img/others/me.png" />
+                <small>
+                    <p class="text-center">
+                        Made by Sobful, Aquila (MapleSEA)<br />
+                        © SOBTECHS 2022
+                    </p>
+                </small>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.1.0/math.js"
+        integrity="sha512-I3BR04+2bI75SNyY+c6cJWCUuseVbX1Zn952KS2Lw6+VKuZSA4tXkX5Py+T8N2I9SMT2+iQkE6eSISbhNxBMmw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://kit.fontawesome.com/9128a1aa6f.js" crossorigin="anonymous"></script>
+    <script src="assets/js/star_forcing.js"></script>
+</body>
+
+</html>

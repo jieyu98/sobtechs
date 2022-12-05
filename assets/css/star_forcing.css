@@ -1,0 +1,170 @@
+body {
+    cursor: url('../img/others/cursor.png'), auto;
+
+
+}
+
+select:hover,
+option:hover,
+button {
+    cursor: url('../img/others/pointer.png'), pointer;
+}
+
+#calculate-btn {
+    cursor: url('../img/others/pointer.png'), pointer;
+}
+
+input[type="checkbox"],
+input[type="checkbox"]+label {
+    cursor: url('../img/others/pointer.png'), pointer;
+}
+
+input[type="number"] {
+    cursor: url('../img/others/cursor.png'), pointer;
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: fixed;
+    background-position: center;
+    background-size: cover;
+    top: 0;
+    z-index: -100;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/backgrounds/star_forcing3.jpeg);
+    overflow: scroll;
+}
+
+.btn-cube {
+    background-color: #aacc22;
+    padding: 1px 15px;
+}
+
+.btn-cube span {
+    color: white;
+    text-shadow:
+        -1px -1px 0 #779922,
+        1px -1px 0 #779922,
+        -1px 1px 0 #779922,
+        1px 1px 0 #779922;
+}
+
+.results-block {
+    margin: 10px;
+    background-color: #66563d;
+    border: 3px solid #3f331d;
+    border-radius: 10px;
+    box-shadow: 0 30px 40px rgba(0, 0, 0, .1);
+    padding: 20px;
+}
+
+.custom-border {
+    padding: 4px;
+    background-color: #4b4231;
+    border: 3px solid #312413;
+    border-radius: 10px;
+}
+
+caption {
+    color: white;
+}
+
+/* FOR SIMULATOR */
+.sf-outer-box {
+    height: auto;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1.5px solid white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.sf-inner-box {   
+    height: auto;
+    width: 100%;
+    background: linear-gradient(rgba(85, 85, 68, 1), rgba(85, 68, 68, 1));
+    border: 4px solid white;
+    border-radius: 10px;
+}
+
+.sim-title {
+    padding-bottom: 3px;
+    display: table;
+    margin: 0 auto;
+    color: gold;
+    font-size: 10px;
+}
+
+.sim-style-1 {
+    background: linear-gradient(to right, rgba(68, 51, 51, 1), rgba(51, 51, 51, 1));
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.sim-warning {
+    margin: 5px;
+}
+
+.sim-item-area {
+    aspect-ratio : 1 / 1;
+    border-radius: 10px;
+    background: linear-gradient(rgba(51, 170, 204, 1), rgba(0, 102, 153, 1));
+    margin-left: 5px;
+}
+
+.sim-item-stats {
+    height: 100%;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.sim-star-catch-area {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.sim-anti-boom-area {
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+#cancel-star-catch, #anti-boom {
+    float: right;
+    margin-top: 2px;
+}
+
+.sim-cost-area {
+    margin: 5px;
+}
+
+#sim-enhance-btn {
+    margin-bottom: 5px;
+    float: right;
+    padding: 3px 15px;
+    border: 1px solid rgba(68, 51, 51, 1);
+    font-size: 0.85rem;
+    color: white;
+    font-weight: 500;
+    background: rgba(119, 170, 0, 1);
+    width: 100px;
+}
+
+#sim-reset-btn {
+    margin-bottom: 5px;
+    float: left;
+    padding: 3px 15px;
+    border: 1px solid rgba(68, 51, 51, 1);
+    font-size: 0.85rem;
+    color: white;
+    font-weight: 500;
+    background: rgba(170, 187, 187, 1);
+    width: 100px;
+    margin-left: 5px;
+}
+
+#sim-cost {
+    font-weight: bolder;
+    font-size: 0.95rem;
+}
