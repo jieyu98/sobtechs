@@ -32,7 +32,7 @@ input[type="number"] {
     background-size: cover;
     top: 0;
     z-index: -100;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/backgrounds/star_forcing.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/backgrounds/star_forcing3.jpeg);
     overflow: scroll;
 }
 
@@ -66,11 +66,105 @@ input[type="number"] {
     border-radius: 10px;
 }
 
-#markov-table {
-    color: #495057;
-    table-layout: fixed;
-}
-
 caption {
     color: white;
+}
+
+/* FOR SIMULATOR */
+.sf-outer-box {
+    height: auto;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1.5px solid white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.sf-inner-box {   
+    height: auto;
+    width: 100%;
+    background: linear-gradient(rgba(85, 85, 68, 1), rgba(85, 68, 68, 1));
+    border: 4px solid white;
+    border-radius: 10px;
+}
+
+.sim-title {
+    padding-bottom: 3px;
+    display: table;
+    margin: 0 auto;
+    color: gold;
+    font-size: 10px;
+}
+
+.sim-style-1 {
+    background: linear-gradient(to right, rgba(68, 51, 51, 1), rgba(51, 51, 51, 1));
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.sim-warning {
+    margin: 5px;
+}
+
+.sim-item-area {
+    aspect-ratio : 1 / 1;
+    border-radius: 10px;
+    background: linear-gradient(rgba(51, 170, 204, 1), rgba(0, 102, 153, 1));
+    margin-left: 5px;
+}
+
+.sim-item-stats {
+    height: 100%;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.sim-star-catch-area {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.sim-anti-boom-area {
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+#cancel-star-catch, #anti-boom {
+    float: right;
+    margin-top: 2px;
+}
+
+.sim-cost-area {
+    margin: 5px;
+}
+
+#sim-enhance-btn {
+    margin-bottom: 5px;
+    float: right;
+    padding: 3px 15px;
+    border: 1px solid rgba(68, 51, 51, 1);
+    font-size: 0.85rem;
+    color: white;
+    font-weight: 500;
+    background: rgba(119, 170, 0, 1);
+    width: 100px;
+}
+
+#sim-reset-btn {
+    margin-bottom: 5px;
+    float: left;
+    padding: 3px 15px;
+    border: 1px solid rgba(68, 51, 51, 1);
+    font-size: 0.85rem;
+    color: white;
+    font-weight: 500;
+    background: rgba(170, 187, 187, 1);
+    width: 100px;
+    margin-left: 5px;
+}
+
+#sim-cost {
+    font-weight: bolder;
+    font-size: 0.95rem;
 }

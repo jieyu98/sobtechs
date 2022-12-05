@@ -43,7 +43,6 @@ $(document).ready(function () {
 
     // Function to calculate raw meso cost
     function raw_meso_cost(equip_level, current_stars) {
-        
         equip_level = math.round(equip_level/10) * 10; // Equip Level is rounded down to the nearest 10 levels.
 
         var cost;

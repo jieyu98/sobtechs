@@ -66,8 +66,71 @@
         <div class="container py-4">
             <div class="row mb-4 pb-4 border-bottom">
                 <div class="col-sm-12 pb-3">
+                    <h5>Star Forcing Simulator</h5>
+                    <small>For itchy hands.</small>
+                </div>
+                <div class="col-sm-12 col-md-6 offset-md-3">
+                    <div class="sf-outer-box">
+                        <span class="sim-title">EQUIPMENT ENCHANT</span>
+                        <div class="sf-inner-box">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="sim-warning sim-style-1">
+                                        <i style="color: gold;" class="fas fa-exclamation-triangle"></i> EQUIPMENT CAN BE <span style="color: gold;">DESTROYED</span> OR <SPAN style="color: gold;">LOSE LEVELS</SPAN> UPON FAILURE. 
+                                    </div>
+                                </div>
+                                <div class="col-5 pr-0">
+                                    <div class="sim-item-area">
+
+                                    </div>
+                                </div>
+                                <div class="col-7 pl-0">
+                                    <div class="sim-item-stats sim-style-1">
+
+                                    </div>
+                                </div>
+                                <div class="col-6 pr-0">
+                                    <div class="sim-star-catch-area sim-style-1">
+                                        CANCEL STAR CATCH 
+                                        <input type="checkbox" id="cancel-star-catch" name="cancel-star-catch">
+                                    </div>
+                                </div>
+                                <div class="col-6 pl-0">
+                                    <div class="sim-anti-boom-area sim-style-1">
+                                        ANTI-DESTRUCTION
+                                        <input type="checkbox" id="anti-boom" name="anti-boom">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="sim-cost-area sim-style-1">
+                                        <i class="fa-solid fa-coins mr-2" style="color: gold;"></i>
+                                        MESO COST: <span class="ml-5" id="sim-cost">100,232,123</span>
+                                    </div>
+                                </div>
+                                <div class="col-6 pr-0">
+                                    <div>
+                                        <button type="button" id="sim-enhance-btn" class="btn">
+                                            <i class="fa-solid fa-circle-plus"></i>
+                                            Enhance
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-6 pl-0">
+                                    <div>
+                                        <button type="button" id="sim-reset-btn" class="btn">
+                                            <i class="fa-solid fa-rotate-left"></i>
+                                            Reset
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4 pb-4 border-bottom">
+                <div class="col-sm-12 pb-3">
                     <h5>Star Forcing Calculator</h5>
-                    <small>Bing Chilling.</small>
                 </div>
                 <div class="col-sm-12">
                     <form id="star-forcing-form">
@@ -121,27 +184,38 @@
                             </div>
                         </div>
                         <!-- Additional Information -->
-                        <div class="form-group row pb-3">
-                            <div class="col-sm-12">
-                                <h6>Additional Information</h6>
-                            </div>
-                            <div class="col-sm-12 col-md-4">
-                                <label for="mvpGrade">MVP Grade</label>
-                                <select class="form-control" id="mvpGrade">
-                                    <option value="0">Yes</option>
-                                    <option value="1" selected>No</option>
-                                </select>
-                                <div class="form-check" id="mvp-form">
-                                    <input class="form-check-input" type="checkbox" value="" id="saveMVP">
-                                    <label class="form-check-label" for="saveMVP">
-                                        Save my MVP information
-                                    </label>
+                        <div class="form-group pb-3">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h6>Additional Information</h6>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <label for="mvpGrade">MVP Grade</label>
+                                    <select class="form-control" id="mvpGrade">
+                                        <option value="0">None</option>
+                                        <option value="1">Silver (3% discount)</option>
+                                        <option value="2">Gold (5% discount)</option>
+                                        <option value="3">Diamond (10% discount)</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <label for="mvpGrade">Premium Service</label>
+                                    <select class="form-control" id="mvpGrade">
+                                        <option value="0">Yes (5% Discount)</option>
+                                        <option value="1">No</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <label for="recoveryCost">Cost of Item Replacement</label>
+                                    <input type="number" class="form-control" id="recoveryCost" value="0">
+                                    <small class="form-text">In case of destruction (boom).</small>
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-md-4">
-                                <label for="recoveryCost">Cost of Item Replacement</label>
-                                <input type="number" class="form-control" id="recoveryCost" value="0">
-                                <small class="form-text">In case of destruction (boom).</small>
+                            <div class="form-check" id="save-form">
+                                <input class="form-check-input" type="checkbox" value="" id="saveInfo" checked>
+                                <label class="form-check-label" for="saveInfo">
+                                    Remember my MVP and Premium Service information
+                                </label>
                             </div>
                         </div>
                         <!-- Events -->
@@ -265,6 +339,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.1.0/math.js"
         integrity="sha512-I3BR04+2bI75SNyY+c6cJWCUuseVbX1Zn952KS2Lw6+VKuZSA4tXkX5Py+T8N2I9SMT2+iQkE6eSISbhNxBMmw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://kit.fontawesome.com/9128a1aa6f.js" crossorigin="anonymous"></script>
     <script src="assets/js/star_forcing.js"></script>
 </body>
 
