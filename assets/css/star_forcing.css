@@ -10,7 +10,8 @@ button {
     cursor: url('../img/others/pointer.png'), pointer;
 }
 
-#calculate-btn {
+#calculate-btn,
+#sim-apply-settings-btn {
     cursor: url('../img/others/pointer.png'), pointer;
 }
 
@@ -36,12 +37,14 @@ input[type="number"] {
     overflow: scroll;
 }
 
-.btn-cube {
+.btn-cube,
+.btn-apply {
     background-color: #aacc22;
     padding: 1px 15px;
 }
 
-.btn-cube span {
+.btn-cube span,
+.btn-apply span {
     color: white;
     text-shadow:
         -1px -1px 0 #779922,
@@ -79,7 +82,7 @@ caption {
     padding: 5px;
 }
 
-.sf-inner-box {   
+.sf-inner-box {
     height: auto;
     width: 100%;
     background: linear-gradient(rgba(85, 85, 68, 1), rgba(85, 68, 68, 1));
@@ -107,16 +110,31 @@ caption {
 }
 
 .sim-item-area {
-    aspect-ratio : 1 / 1;
+    aspect-ratio: 1 / 1;
     border-radius: 10px;
     background: linear-gradient(rgba(51, 170, 204, 1), rgba(0, 102, 153, 1));
     margin-left: 5px;
+    padding: 10px;
+}
+
+.sim-dotted-area {
+    border-radius: 10px;
+    border: 1px dotted white;
+    height: 100%;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sim-item-stats {
     height: 100%;
     margin-right: 5px;
     margin-left: 5px;
+    font-size: 1rem !important;
+    font-weight: bold;
 }
 
 .sim-star-catch-area {
@@ -130,7 +148,8 @@ caption {
     margin-left: 5px;
 }
 
-#cancel-star-catch, #anti-boom {
+#cancel-star-catch,
+#anti-boom {
     float: right;
     margin-top: 2px;
 }
@@ -164,7 +183,12 @@ caption {
     margin-left: 5px;
 }
 
-#sim-cost {
+#sim-cost,
+#sim-total-cost {
     font-weight: bolder;
     font-size: 0.95rem;
+}
+
+#sim-success-image, #sim-fail-image, #sim-destroyed-image {
+    display: none;
 }
