@@ -67,74 +67,146 @@
             <div class="row mb-4 pb-4 border-bottom">
                 <div class="col-sm-12 pb-3">
                     <h5>Star Forcing Simulator</h5>
-                    <small>For itchy hands.</small>
                 </div>
+                <!-- Simulator Settings -->
+                <div class="col-sm-12">
+                    <h6>Simulator Settings</h6>
+                </div>
+                <div class="col-sm-12 pb-3">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <label for="sim-equip-lvl">Item Level</label>
+                            <input type="number" class="form-control" id="sim-equip-lvl" value="200">
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="sim-starting-stars">Stars (to start with)</label>
+                            <input type="number" class="form-control" id="sim-starting-stars" value="0">
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="sim-budget">Meso Budget</label>
+                            <input type="number" class="form-control" id="sim-budget" value="0">
+                            <small class="form-text">Leave as 0 if none.</small>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="sim-mvp-grade">MVP Grade</label>
+                            <select class="form-control" id="sim-mvp-grade">
+                                <option value="None">None</option>
+                                <option value="Silver">Silver (3% discount)</option>
+                                <option value="Gold">Gold (5% discount)</option>
+                                <option value="Diamond">Diamond (10% discount)</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="sim-psc">Premium Service</label>
+                            <select class="form-control" id="sim-psc">
+                                <option value="No">No</option>
+                                <option value="Yes">Yes (5% Discount)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-apply btn-sm float-right" id="sim-apply-settings-btn">
+                        <span>Reload Simulator</span>
+                    </button>
+                </div>
+                <!-- Simulator GUI -->
                 <div class="col-sm-12 col-md-6 offset-md-3">
                     <div class="sf-outer-box">
                         <span class="sim-title">EQUIPMENT ENCHANT</span>
                         <div class="sf-inner-box">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="sim-warning sim-style-1">
-                                        <i style="color: gold;" class="fas fa-exclamation-triangle"></i> EQUIPMENT CAN BE <span style="color: gold;">DESTROYED</span> OR <SPAN style="color: gold;">LOSE LEVELS</SPAN> UPON FAILURE. 
+                            <form id="sim-form">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="sim-warning sim-style-1 text-center">
+                                            <span id="warning-1">
+                                                <span style="color: gold;">MESOS</span> ARE USED TO ENHANCE EQUIPMENT.
+                                            </span>
+                                            <span id="warning-2">
+                                                <i style="color: gold;" class="fas fa-exclamation-triangle"></i> THE <span style="color: gold;">ENHANCEMENT LEVEL</span> WILL BE <span style="color: gold;">REDUCED</span> UPON FAILURE.
+                                            </span>
+                                            <span id="warning-3">
+                                                <i style="color: gold;" class="fas fa-exclamation-triangle"></i> EQUIPMENT
+                                                CAN BE <span style="color: gold;">DESTROYED</span> OR <SPAN
+                                                    style="color: gold;">LOSE LEVELS</SPAN> UPON FAILURE.
+                                            </span>
+                                            <span id="warning-chance-time">
+                                                <span style="color: gold; font-weight: bolder;">CHANCE TIME !!</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-5 pr-0">
+                                        <div class="sim-item-area">
+                                            <div class="sim-dotted-area center">
+                                                <img id="sim-success-image" class="img-fluid" src="assets/img/others/success.png" />
+                                                <img id="sim-fail-image" class="img-fluid" src="assets/img/others/fail.png" />
+                                                <img id="sim-destroyed-image" class="img-fluid" src="assets/img/others/destroyed.png" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-7 pl-0">
+                                        <div class="sim-item-stats sim-style-1">
+                                            <span id="sim-current-stars">-</span>
+                                            <i class="fa-solid fa-chevron-right ml-2 mr-2"></i>
+                                            <span id="sim-next-stars">-</span>
+                                            <br />
+                                            <span id="sim-success-rate"></span>
+                                            <br />
+                                            <span id="sim-fail-rate"></span>
+                                            <br />
+                                            <span id="sim-destroy-rate"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 pr-0">
+                                        <div class="sim-star-catch-area sim-style-1">
+                                            CANCEL STAR CATCH
+                                            <input type="checkbox" id="cancel-star-catch" name="cancel-star-catch">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 pl-0">
+                                        <div class="sim-anti-boom-area sim-style-1">
+                                            ANTI-DESTRUCTION
+                                            <input type="checkbox" id="anti-boom" name="anti-boom">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="sim-cost-area sim-style-1">
+                                            <i class="fa-solid fa-coins mr-2" style="color: gold;"></i>
+                                            MESO COST: <span class="ml-5" id="sim-cost">-</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="sim-cost-area sim-style-1 mt-0">
+                                            <i class="fa-solid fa-sack-dollar mr-2" style="color: gold;"></i>
+                                            TOTAL COST: <span class="ml-5" id="sim-total-cost">-</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 pr-0">
+                                        <div>
+                                            <button type="submit" id="sim-enhance-btn" class="btn">
+                                                <i class="fa-solid fa-circle-plus"></i>
+                                                Enhance
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 pl-0">
+                                        <div>
+                                            <button type="button" id="sim-reset-btn" class="btn">
+                                                <i class="fa-solid fa-rotate-left"></i>
+                                                Reset
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-5 pr-0">
-                                    <div class="sim-item-area">
-
-                                    </div>
-                                </div>
-                                <div class="col-7 pl-0">
-                                    <div class="sim-item-stats sim-style-1">
-
-                                    </div>
-                                </div>
-                                <div class="col-6 pr-0">
-                                    <div class="sim-star-catch-area sim-style-1">
-                                        CANCEL STAR CATCH 
-                                        <input type="checkbox" id="cancel-star-catch" name="cancel-star-catch">
-                                    </div>
-                                </div>
-                                <div class="col-6 pl-0">
-                                    <div class="sim-anti-boom-area sim-style-1">
-                                        ANTI-DESTRUCTION
-                                        <input type="checkbox" id="anti-boom" name="anti-boom">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="sim-cost-area sim-style-1">
-                                        <i class="fa-solid fa-coins mr-2" style="color: gold;"></i>
-                                        MESO COST: <span class="ml-5" id="sim-cost">100,232,123</span>
-                                    </div>
-                                </div>
-                                <div class="col-6 pr-0">
-                                    <div>
-                                        <button type="button" id="sim-enhance-btn" class="btn">
-                                            <i class="fa-solid fa-circle-plus"></i>
-                                            Enhance
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="col-6 pl-0">
-                                    <div>
-                                        <button type="button" id="sim-reset-btn" class="btn">
-                                            <i class="fa-solid fa-rotate-left"></i>
-                                            Reset
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row mb-4 pb-4 border-bottom">
+            <!-- <div class="row mb-4 pb-4 border-bottom">
                 <div class="col-sm-12 pb-3">
                     <h5>Star Forcing Calculator</h5>
                 </div>
                 <div class="col-sm-12">
                     <form id="star-forcing-form">
-                        <!-- Equipment Information -->
                         <div class="form-group row pb-3">
                             <div class="col-sm-12">
                                 <h6>Equipment Information</h6>
@@ -151,7 +223,6 @@
                                 </select>
                             </div>
                         </div>
-                        <!-- Enhancement Options -->
                         <div class="form-group pb-3">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -183,7 +254,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Additional Information -->
                         <div class="form-group pb-3">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -218,7 +288,6 @@
                                 </label>
                             </div>
                         </div>
-                        <!-- Events -->
                         <div class="form-group row">
                             <div class="col-sm-12">
                                 <h6>Events Selection</h6>
@@ -312,8 +381,7 @@
                     <small>Row: Current tier. Column: Desired tier. Computed using Markov
                         chain.</small>
                 </div>
-            </div>
-            <!---->
+            </div> -->
             <div>
                 <img class="img-responsive mx-auto d-block mb-2" src="assets/img/others/me.png" />
                 <small>
@@ -327,9 +395,13 @@
         </div>
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    <audio id="enchant-sound" src="assets/sounds/Enchant.mp3"></audio>
+    <audio id="success-sound" src="assets/sounds/Success.mp3"></audio>
+    <audio id="fail-sound" src="assets/sounds/Fail.mp3"></audio>
+    <audio id="destroyed-sound" src="assets/sounds/Destroy.mp3"></audio>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
