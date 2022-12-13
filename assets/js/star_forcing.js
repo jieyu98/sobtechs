@@ -13,7 +13,7 @@ $(document).ready(function () {
     function initialize_sim() {
         $('#sim-current-stars').text(sim_starting_stars);
         $('#sim-next-stars').text(sim_starting_stars + 1);
-        $('#sim-cost').text(raw_meso_cost(sim_equip_lvl, sim_starting_stars).toLocaleString("en-US"));
+        $('#sim-cost').text(get_meso_cost(sim_equip_lvl, sim_starting_stars, sim_mvp_grade, sim_psc).toLocaleString("en-US"));
         $('#sim-total-cost').text(sim_total_cost);
 
         res = get_probabilities(sim_starting_stars);
@@ -46,7 +46,7 @@ $(document).ready(function () {
 
     $('#anti-boom').change(function () { 
         var current_stars = $('#sim-current-stars').text();
-        var cur_enhance_cost = raw_meso_cost(sim_equip_lvl, current_stars);
+        var cur_enhance_cost = get_meso_cost(sim_equip_lvl, current_stars);
 
         if ($("#anti-boom").is(':checked')) {
             // Double the displayed meso cost
@@ -64,7 +64,7 @@ $(document).ready(function () {
 
         var current_stars = $('#sim-current-stars').text();
         var next_stars = $('#sim-next-stars').text();
-        var cur_enhance_cost = raw_meso_cost(sim_equip_lvl, current_stars);
+        var cur_enhance_cost = get_meso_cost(sim_equip_lvl, current_stars);
 
         await delay(1000);
 
@@ -131,7 +131,7 @@ $(document).ready(function () {
 
         sim_total_cost += parseInt(cur_enhance_cost);
 
-        var next_enhance_cost = raw_meso_cost(sim_equip_lvl, current_stars);
+        var next_enhance_cost = get_meso_cost(sim_equip_lvl, current_stars);
 
         // Update and display cost (of next enhancement)
         if ($("#anti-boom").is(':checked') && current_stars >= 12 && current_stars <= 16)
@@ -258,8 +258,8 @@ $(document).ready(function () {
             star_catch = false;
 
         while (current_stars != target_stars) {
-            console.log("Meso cost:", raw_meso_cost(equip_level, current_stars));
-            total_meso_cost += raw_meso_cost(equip_level, current_stars);
+            console.log("Meso cost:", get_meso_cost(equip_level, current_stars));
+            total_meso_cost += get_meso_cost(equip_level, current_stars);
 
             tap_res = tap(current_stars, star_catch);
 
@@ -278,7 +278,7 @@ $(document).ready(function () {
     });
 
     // Function to calculate raw meso cost
-    function raw_meso_cost(equip_level, current_stars) {
+    function get_meso_cost(equip_level, current_stars) {
         equip_level = math.round(equip_level / 10) * 10; // Equip Level is rounded down to the nearest 10 levels.
 
         var cost;
