@@ -38,6 +38,57 @@
 </head>
 
 <body>
+    <!-- Modal for Simulator Settings -->
+    <div class="modal fade" id="sim-settings-modal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Simulator Settings</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="sim-equip-lvl">Item Level</label>
+                            <input type="number" class="form-control" id="sim-equip-lvl" value="200">
+                        </div>
+                        <div class="form-group">
+                            <label for="sim-starting-stars">Stars (to start with)</label>
+                            <input type="number" class="form-control" id="sim-starting-stars" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="sim-budget">Meso Budget</label>
+                            <input type="number" class="form-control" id="sim-budget" value="0">
+                            <small class="form-text">Leave as 0 if none.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="sim-mvp-grade">MVP Grade</label>
+                            <select class="form-control" id="sim-mvp-grade">
+                                <option value="None">None</option>
+                                <option value="Silver">Silver (3% discount)</option>
+                                <option value="Gold">Gold (5% discount)</option>
+                                <option value="Diamond">Diamond (10% discount)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="sim-psc">Premium Service</label>
+                            <select class="form-control" id="sim-psc">
+                                <option value="No">No</option>
+                                <option value="Yes">Yes (5% Discount)</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="sim-apply-settings-btn" data-dismiss="modal">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <main class="background">
         <nav class="container navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" href="index.html">
@@ -68,46 +119,6 @@
                 <div class="col-sm-12 pb-3">
                     <h5>Star Forcing Simulator</h5>
                 </div>
-                <!-- Simulator Settings -->
-                <div class="col-sm-12">
-                    <h6>Simulator Settings</h6>
-                </div>
-                <div class="col-sm-12 pb-3">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-4">
-                            <label for="sim-equip-lvl">Item Level</label>
-                            <input type="number" class="form-control" id="sim-equip-lvl" value="200">
-                        </div>
-                        <div class="col-sm-12 col-md-4">
-                            <label for="sim-starting-stars">Stars (to start with)</label>
-                            <input type="number" class="form-control" id="sim-starting-stars" value="0">
-                        </div>
-                        <div class="col-sm-12 col-md-4">
-                            <label for="sim-budget">Meso Budget</label>
-                            <input type="number" class="form-control" id="sim-budget" value="0">
-                            <small class="form-text">Leave as 0 if none.</small>
-                        </div>
-                        <div class="col-sm-12 col-md-4">
-                            <label for="sim-mvp-grade">MVP Grade</label>
-                            <select class="form-control" id="sim-mvp-grade">
-                                <option value="None">None</option>
-                                <option value="Silver">Silver (3% discount)</option>
-                                <option value="Gold">Gold (5% discount)</option>
-                                <option value="Diamond">Diamond (10% discount)</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-12 col-md-4">
-                            <label for="sim-psc">Premium Service</label>
-                            <select class="form-control" id="sim-psc">
-                                <option value="No">No</option>
-                                <option value="Yes">Yes (5% Discount)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-apply btn-sm float-right" id="sim-apply-settings-btn">
-                        <span>Reload Simulator</span>
-                    </button>
-                </div>
                 <!-- Simulator GUI -->
                 <div class="col-sm-12 col-md-6 offset-md-3">
                     <div class="sf-outer-box">
@@ -121,10 +132,13 @@
                                                 <span style="color: gold;">MESOS</span> ARE USED TO ENHANCE EQUIPMENT.
                                             </span>
                                             <span id="warning-2">
-                                                <i style="color: gold;" class="fas fa-exclamation-triangle"></i> THE <span style="color: gold;">ENHANCEMENT LEVEL</span> WILL BE <span style="color: gold;">REDUCED</span> UPON FAILURE.
+                                                <i style="color: gold;" class="fas fa-exclamation-triangle"></i> THE
+                                                <span style="color: gold;">ENHANCEMENT LEVEL</span> WILL BE <span
+                                                    style="color: gold;">REDUCED</span> UPON FAILURE.
                                             </span>
                                             <span id="warning-3">
-                                                <i style="color: gold;" class="fas fa-exclamation-triangle"></i> EQUIPMENT
+                                                <i style="color: gold;" class="fas fa-exclamation-triangle"></i>
+                                                EQUIPMENT
                                                 CAN BE <span style="color: gold;">DESTROYED</span> OR <SPAN
                                                     style="color: gold;">LOSE LEVELS</SPAN> UPON FAILURE.
                                             </span>
@@ -136,9 +150,12 @@
                                     <div class="col-5 pr-0">
                                         <div class="sim-item-area">
                                             <div class="sim-dotted-area center">
-                                                <img id="sim-success-image" class="img-fluid" src="assets/img/others/success.png" />
-                                                <img id="sim-fail-image" class="img-fluid" src="assets/img/others/fail.png" />
-                                                <img id="sim-destroyed-image" class="img-fluid" src="assets/img/others/destroyed.png" />
+                                                <img id="sim-success-image" class="img-fluid"
+                                                    src="assets/img/others/success.png" />
+                                                <img id="sim-fail-image" class="img-fluid"
+                                                    src="assets/img/others/fail.png" />
+                                                <img id="sim-destroyed-image" class="img-fluid"
+                                                    src="assets/img/others/destroyed.png" />
                                             </div>
                                         </div>
                                     </div>
@@ -199,6 +216,9 @@
                             </form>
                         </div>
                     </div>
+                    <button type="button" class="btn mt-2 modal-btn" data-toggle="modal" data-target="#sim-settings-modal">
+                        <i class="fa-solid fa-sliders"></i> Simulator Settings
+                    </button>
                 </div>
             </div>
             <!-- <div class="row mb-4 pb-4 border-bottom">

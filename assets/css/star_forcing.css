@@ -10,8 +10,7 @@ button {
     cursor: url('../img/others/pointer.png'), pointer;
 }
 
-#calculate-btn,
-#sim-apply-settings-btn {
+#calculate-btn {
     cursor: url('../img/others/pointer.png'), pointer;
 }
 
@@ -37,14 +36,12 @@ input[type="number"] {
     overflow: scroll;
 }
 
-.btn-cube,
-.btn-apply {
+.btn-cube {
     background-color: #aacc22;
     padding: 1px 15px;
 }
 
-.btn-cube span,
-.btn-apply span {
+.btn-cube span {
     color: white;
     text-shadow:
         -1px -1px 0 #779922,
@@ -191,4 +188,19 @@ caption {
 
 #sim-success-image, #sim-fail-image, #sim-destroyed-image {
     display: none;
+}
+
+.modal {
+    color: #212529;
+}
+
+.modal-btn {
+    background-color: #aacc22;
+    color: white;
+    text-shadow:
+        -1px -1px 0 #779922,
+        1px -1px 0 #779922,
+        -1px 1px 0 #779922,
+        1px 1px 0 #779922;
+    width: 100%;
 }
