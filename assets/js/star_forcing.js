@@ -13,7 +13,7 @@ $(document).ready(function () {
     function initialize_sim() {
         $('#sim-current-stars').text(sim_starting_stars);
         $('#sim-next-stars').text(sim_starting_stars + 1);
-        $('#sim-cost').text(get_meso_cost(sim_equip_lvl, sim_starting_stars, sim_mvp_grade, sim_psc).toLocaleString("en-US"));
+        $('#sim-cost').text(get_meso_cost(sim_equip_lvl, sim_starting_stars).toLocaleString("en-US"));
         $('#sim-total-cost').text(sim_total_cost);
 
         res = get_probabilities(sim_starting_stars);
@@ -29,6 +29,8 @@ $(document).ready(function () {
 
         sim_equip_lvl = $("#sim-equip-lvl").val();
         sim_starting_stars = parseInt($("#sim-starting-stars").val());
+        sim_mvp_grade =  $("#sim-mvp-grade").val();
+        sim_psc = $("#sim-psc").val();
         sim_total_cost = 0;
 
         if ($("#cancel-star-catch").is(':checked')) {
@@ -298,6 +300,26 @@ $(document).ready(function () {
 
         var temp = (math.pow(equip_level, 3)) * (math.pow((parseInt(current_stars) + 1), exponent) / constant) + 10;
         cost = math.round((temp * 100) / 100) * 100; // Meso cost is rounded off to the nearest hundreds. 
+
+        if (current_stars <= 16) {
+            // MVP
+            if (sim_mvp_grade == "Silver") {
+                mvp_discount = cost * 0.03;
+            } else if (sim_mvp_grade == "Gold") {
+                mvp_discount = cost * 0.05;
+            } else if (sim_mvp_grade == "Diamond") {
+                mvp_discount = cost * 0.1;
+            } else {
+                mvp_discount = 0;
+            }
+
+            if (sim_psc == "Yes")
+                psc_discount = cost * 0.05;
+            else 
+                psc_discount = 0;
+
+            cost = cost - mvp_discount - psc_discount;
+        }
 
         return cost
     }
