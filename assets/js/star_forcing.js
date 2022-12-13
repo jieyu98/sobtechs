@@ -31,10 +31,31 @@ $(document).ready(function () {
         sim_starting_stars = parseInt($("#sim-starting-stars").val());
         sim_total_cost = 0;
 
+        if ($("#cancel-star-catch").is(':checked')) {
+            $("#cancel-star-catch").prop('checked', false); // Unchecks it
+        }
+
+        if ($("#anti-boom").is(':checked')) {
+            $('#anti-boom').prop('checked', false); // Unchecks it
+        }
+
         initialize_sim();
     });
 
     var decrease_count = 0;
+
+    $('#anti-boom').change(function () { 
+        var current_stars = $('#sim-current-stars').text();
+        var cur_enhance_cost = raw_meso_cost(sim_equip_lvl, current_stars);
+
+        if ($("#anti-boom").is(':checked')) {
+            // Double the displayed meso cost
+            $('#sim-cost').text((cur_enhance_cost * 2).toLocaleString("en-US"));
+        }
+        else {
+            $('#sim-cost').text(cur_enhance_cost.toLocaleString("en-US"));
+        } 
+    });
 
     $("#sim-enhance-btn").click(async function () {
         $('#sim-enhance-btn').prop('disabled', true); // Disable button
@@ -93,8 +114,12 @@ $(document).ready(function () {
             play_sound("destroyed");
         }
 
-        // Update the probabilities displayed
-        current_stars = $('#sim-current-stars').text();
+        // Check if anti-boom is checked AND valid ()
+        if ($("#anti-boom").is(':checked') && current_stars >= 12 && current_stars <= 16) { // Here current_stars is the old one (before update)
+            cur_enhance_cost = cur_enhance_cost * 2;
+        } 
+
+        current_stars = $('#sim-current-stars').text(); // Update to new current_stars
 
         if (decrease_count == 2) {
             res = [100, false, false, false]; // Chance time
@@ -102,15 +127,19 @@ $(document).ready(function () {
             res = get_probabilities(current_stars);
         }
         
-        update_sim_display(res, current_stars);
+        update_sim_display(res, current_stars); // Update probabilities displayed
 
         sim_total_cost += parseInt(cur_enhance_cost);
 
         var next_enhance_cost = raw_meso_cost(sim_equip_lvl, current_stars);
 
-        $('#sim-cost').text(next_enhance_cost.toLocaleString("en-US")); // Update and display cost (of next enhancement)
-        $('#sim-total-cost').text(sim_total_cost.toLocaleString("en-US")); // Update and display cost (of next enhancement)
+        // Update and display cost (of next enhancement)
+        if ($("#anti-boom").is(':checked') && current_stars >= 12 && current_stars <= 16)
+            $('#sim-cost').text((next_enhance_cost * 2).toLocaleString("en-US"));
+        else 
+            $('#sim-cost').text(next_enhance_cost.toLocaleString("en-US"));
 
+        $('#sim-total-cost').text(sim_total_cost.toLocaleString("en-US")); // Update and display total cost
 
         $('#sim-result').text(tap_res); // Display result
 
@@ -176,7 +205,14 @@ $(document).ready(function () {
             } else {
                 $("#warning-3").css("display", "block");
             }
-        }  
+        }
+
+        // Check if "ANTI-DESTRUCTION" option should be enabled or disabled
+        if (current_stars >= 12 && current_stars <= 16) {
+            $('#anti-boom').prop('disabled', false);
+        } else {
+            $('#anti-boom').prop('disabled', true);
+        }
     }
 
     function get_probabilities(star) {
