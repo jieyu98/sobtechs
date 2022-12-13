@@ -59,6 +59,10 @@ $(document).ready(function () {
         } 
     });
 
+    $("#sim-reset-btn").click(function () {
+        $("#sim-apply-settings-btn").click();
+    });
+
     $("#sim-enhance-btn").click(async function () {
         $('#sim-enhance-btn').prop('disabled', true); // Disable button
 
