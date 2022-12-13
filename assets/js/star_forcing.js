@@ -47,7 +47,11 @@ $(document).ready(function () {
 
         await delay(1000);
 
-        tap_res = tap(current_stars, true, decrease_count);
+        // Check if "CANCEL STAR CATCH" is ticked
+        if ($("#cancel-star-catch").is(':checked'))
+            tap_res = tap(current_stars, false, decrease_count);
+        else 
+            tap_res = tap(current_stars, true, decrease_count);
 
         if (tap_res == "Pass") {
             decrease_count = 0;
