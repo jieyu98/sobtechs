@@ -11,6 +11,7 @@ $(document).ready(function () {
     var sim_total_cost = 0;
     var sim_30_disc = false;
     var sim_51015 = false;
+    var sim_replacement_cost = 0;
 
     function initialize_sim() {
         $('#sim-current-stars').text(sim_starting_stars);
@@ -35,6 +36,7 @@ $(document).ready(function () {
         sim_starting_stars = parseInt($("#sim-starting-stars").val());
         sim_mvp_grade =  $("#sim-mvp-grade").val();
         sim_psc = $("#sim-psc").val();
+        sim_replacement_cost = parseInt($("#sim-replacement-cost").val());
         sim_total_cost = 0;
 
         if ($("#cancel-star-catch").is(':checked')) {
@@ -84,6 +86,8 @@ $(document).ready(function () {
         $("#sim-destroyed-image").css("display", "none"); // Hide destroyed image
         
         decrease_count = 0; // Reinitialize decrease count to 0
+
+        sim_total_cost += sim_replacement_cost; // Add item replacement cost
 
         initialize_sim();
     });
@@ -437,7 +441,6 @@ $(document).ready(function () {
     function tap(current_stars, star_catch, anti_boom, count) {
         // Chance time
         if (count == 2) {
-            decrease_count = 0; // Reset
             return "Pass";
         }
 
