@@ -60,11 +60,6 @@
                             <input type="number" class="form-control" id="sim-starting-stars" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="sim-budget">Meso Budget</label>
-                            <input type="number" class="form-control" id="sim-budget" value="0">
-                            <small class="form-text">Leave as 0 if none.</small>
-                        </div>
-                        <div class="form-group">
                             <label for="sim-mvp-grade">MVP Grade</label>
                             <select class="form-control" id="sim-mvp-grade">
                                 <option value="None">None</option>
@@ -80,11 +75,24 @@
                                 <option value="Yes">Yes (5% Discount)</option>
                             </select>
                         </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="sim-30-disc">
+                            <label class="form-check-label" for="sim-30-disc">
+                                30% Discount
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="sim-51015">
+                            <label class="form-check-label" for="sim-51015">
+                                5/10/15
+                            </label>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="sim-apply-settings-btn" data-dismiss="modal">Apply</button>
+                    <button type="button" class="btn btn-primary" id="sim-apply-settings-btn"
+                        data-dismiss="modal">Apply</button>
                 </div>
             </div>
         </div>
@@ -203,6 +211,12 @@
                                                 Enhance
                                             </button>
                                         </div>
+                                        <div>
+                                            <button type="submit" id="sim-revive-btn" class="btn">
+                                                <i class="fa-solid fa-frown"></i>
+                                                Revive
+                                            </button>
+                                        </div>
                                     </div>
                                     <div class="col-6 pl-0">
                                         <div>
@@ -216,7 +230,8 @@
                             </form>
                         </div>
                     </div>
-                    <button type="button" class="btn mt-2 modal-btn" data-toggle="modal" data-target="#sim-settings-modal">
+                    <button type="button" class="btn mt-2 modal-btn" data-toggle="modal"
+                        data-target="#sim-settings-modal">
                         <i class="fa-solid fa-sliders"></i> Simulator Settings
                     </button>
                 </div>

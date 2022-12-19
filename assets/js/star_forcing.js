@@ -9,12 +9,15 @@ $(document).ready(function () {
     var sim_mvp_grade = "None";
     var sim_psc = "No";
     var sim_total_cost = 0;
+    var sim_30_disc = false;
 
     function initialize_sim() {
         $('#sim-current-stars').text(sim_starting_stars);
         $('#sim-next-stars').text(sim_starting_stars + 1);
-        $('#sim-cost').text(get_meso_cost(sim_equip_lvl, sim_starting_stars).toLocaleString("en-US"));
-        $('#sim-total-cost').text(sim_total_cost);
+
+        $('#sim-cost').text(get_meso_cost(sim_equip_lvl, sim_starting_stars)[0].toLocaleString("en-US"));
+        
+        $('#sim-total-cost').text(sim_total_cost.toLocaleString("en-US"));
 
         res = get_probabilities(sim_starting_stars);
 
@@ -23,6 +26,8 @@ $(document).ready(function () {
 
     // Start simulator
     initialize_sim();
+
+    var decrease_count = 0;
 
     $("#sim-apply-settings-btn").click(function () {
         // TODO: TRIVIAL CHECKS
@@ -41,21 +46,52 @@ $(document).ready(function () {
             $('#anti-boom').prop('checked', false); // Unchecks it
         }
 
+        if ($("#sim-30-disc").is(':checked')) {
+            sim_30_disc = true;
+        } else {
+            sim_30_disc = false;
+        }
+
+        $("#sim-revive-btn").css("display", "none"); // Hide revive button
+        $("#sim-enhance-btn").css("display", "block"); // Show enhance button
+        
+        $("#sim-destroyed-image").css("display", "none"); // Hide destroyed image
+
+        decrease_count = 0; // Reinitialize decrease count to 0
+
         initialize_sim();
     });
 
-    var decrease_count = 0;
+    $("#sim-revive-btn").click(function () {
+        sim_starting_stars = 12;
+
+        if ($("#cancel-star-catch").is(':checked')) {
+            $("#cancel-star-catch").prop('checked', false); // Unchecks it
+        }
+
+        if ($("#anti-boom").is(':checked')) {
+            $('#anti-boom').prop('checked', false); // Unchecks it
+        }
+
+        $("#sim-revive-btn").css("display", "none"); // Hide revive button
+        $("#sim-enhance-btn").css("display", "block"); // Show enhance button
+        
+        $("#sim-destroyed-image").css("display", "none"); // Hide destroyed image
+        
+        decrease_count = 0; // Reinitialize decrease count to 0
+
+        initialize_sim();
+    });
 
     $('#anti-boom').change(function () { 
         var current_stars = $('#sim-current-stars').text();
-        var cur_enhance_cost = get_meso_cost(sim_equip_lvl, current_stars);
+        let temp = get_meso_cost(sim_equip_lvl, current_stars);
 
         if ($("#anti-boom").is(':checked')) {
-            // Double the displayed meso cost
-            $('#sim-cost').text((cur_enhance_cost * 2).toLocaleString("en-US"));
+            $('#sim-cost').text(temp[1].toLocaleString("en-US"));
         }
         else {
-            $('#sim-cost').text(cur_enhance_cost.toLocaleString("en-US"));
+            $('#sim-cost').text(temp[0].toLocaleString("en-US"));
         } 
     });
 
@@ -70,7 +106,9 @@ $(document).ready(function () {
 
         var current_stars = $('#sim-current-stars').text();
         var next_stars = $('#sim-next-stars').text();
-        var cur_enhance_cost = get_meso_cost(sim_equip_lvl, current_stars);
+
+        var temp = get_meso_cost(sim_equip_lvl, current_stars);
+        var cur_enhance_cost = temp[0];
 
         await delay(1000);
 
@@ -113,16 +151,17 @@ $(document).ready(function () {
         } else if (tap_res == "Destroyed") {
             decrease_count = 0;
 
-            $("#sim-destroyed-image").fadeIn("fast", function () {
-                // $("#sim-fail-image").fadeOut(1000);
-            });
+            $("#sim-destroyed-image").fadeIn("fast");
+
+            $("#sim-revive-btn").css("display", "block"); // Display revive button
+            $("#sim-enhance-btn").css("display", "none"); // Hide enhance button
 
             play_sound("destroyed");
         }
 
-        // Check if anti-boom is checked AND valid ()
+        // Check if anti-boom is checked AND valid
         if ($("#anti-boom").is(':checked') && current_stars >= 12 && current_stars <= 16) { // Here current_stars is the old one (before update)
-            cur_enhance_cost = cur_enhance_cost * 2;
+            cur_enhance_cost = temp[1];
         } 
 
         current_stars = $('#sim-current-stars').text(); // Update to new current_stars
@@ -137,13 +176,13 @@ $(document).ready(function () {
 
         sim_total_cost += parseInt(cur_enhance_cost);
 
-        var next_enhance_cost = get_meso_cost(sim_equip_lvl, current_stars);
+        temp = get_meso_cost(sim_equip_lvl, current_stars);
 
         // Update and display cost (of next enhancement)
         if ($("#anti-boom").is(':checked') && current_stars >= 12 && current_stars <= 16)
-            $('#sim-cost').text((next_enhance_cost * 2).toLocaleString("en-US"));
+            $('#sim-cost').text(temp[1].toLocaleString("en-US"));
         else 
-            $('#sim-cost').text(next_enhance_cost.toLocaleString("en-US"));
+            $('#sim-cost').text(temp[0].toLocaleString("en-US"));
 
         $('#sim-total-cost').text(sim_total_cost.toLocaleString("en-US")); // Update and display total cost
 
@@ -152,11 +191,15 @@ $(document).ready(function () {
         $('#sim-enhance-btn').prop('disabled', false); // Enable button
     });
 
+    
+
     function play_sound(sound) {
         // Stop any ongoing sounds
         $('audio').each(function () {
             this.pause(); // Stop playing
             this.currentTime = 0; // Reset time
+
+            this.volume = 0.05; // Adjust volume
         });
 
         if (sound == "enchant") {
@@ -283,7 +326,6 @@ $(document).ready(function () {
         $('#tierChance').text(total_meso_cost.toLocaleString("en-US"));
     });
 
-    // Function to calculate raw meso cost
     function get_meso_cost(equip_level, current_stars) {
         equip_level = math.round(equip_level / 10) * 10; // Equip Level is rounded down to the nearest 10 levels.
 
@@ -303,7 +345,13 @@ $(document).ready(function () {
         }
 
         var temp = (math.pow(equip_level, 3)) * (math.pow((parseInt(current_stars) + 1), exponent) / constant) + 10;
-        cost = math.round((temp * 100) / 100) * 100; // Meso cost is rounded off to the nearest hundreds. 
+        cost = math.round((temp * 100) / 100) * 100; // Meso cost is rounded off to the nearest hundreds.
+        let original_cost = cost;
+        console.log("original: ", original_cost);
+        
+        var mvp_discount = 0;
+        var psc_discount = 0;
+        var event_discount = 0;
 
         if (current_stars <= 16) {
             // MVP
@@ -313,19 +361,45 @@ $(document).ready(function () {
                 mvp_discount = cost * 0.05;
             } else if (sim_mvp_grade == "Diamond") {
                 mvp_discount = cost * 0.1;
-            } else {
-                mvp_discount = 0;
             }
 
+            // PSC
             if (sim_psc == "Yes")
                 psc_discount = cost * 0.05;
-            else 
-                psc_discount = 0;
-
-            cost = cost - mvp_discount - psc_discount;
         }
 
-        return cost
+        cost = cost - mvp_discount - psc_discount;
+
+        if (sim_30_disc == true) {
+            event_discount = cost * 0.3;
+        }
+
+        cost = cost - event_discount;
+
+        // Calculate anti-boom cost 
+        var a_cost = 0;
+
+        if (sim_30_disc == true) {
+            // Original cost * 2 * Some constant
+
+            if (sim_mvp_grade == "None") {
+                a_cost = original_cost * 2 * 0.85; 
+            } else if (sim_mvp_grade == "Silver") {
+                a_cost = original_cost * 2 * 0.8605; // NEED VERIFICATION
+            } else if (sim_mvp_grade == "Gold") {
+                a_cost = original_cost * 2 * 0.8675; // NEED VERIFICATION
+            } else if (sim_mvp_grade == "Diamond") {
+                a_cost = original_cost * 2 * 0.815; 
+            }
+        } else {
+            a_cost = cost * 2;
+        }
+
+        // Round to nearest integer (Need verifications)
+        cost = math.round(cost);
+        a_cost = math.round(a_cost);
+
+        return [cost, a_cost]
     }
 
     function tap(current_stars, star_catch, count) {
