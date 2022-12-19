@@ -117,11 +117,17 @@ $(document).ready(function () {
 
         await delay(1000);
 
-        // Check if "CANCEL STAR CATCH" is ticked
+        var star_catch_enabled = false;
+        var anti_boom_enabled = false;
+
         if ($("#cancel-star-catch").is(':checked'))
-            tap_res = tap(current_stars, false, decrease_count);
-        else 
-            tap_res = tap(current_stars, true, decrease_count);
+            star_catch_enabled = true
+
+        if ($("#anti-boom").is(':checked:not(:disabled)')) // checked AND not disabled
+            anti_boom_enabled = true
+
+        // Call tap function and get results
+        tap_res = tap(current_stars, star_catch_enabled, anti_boom_enabled, decrease_count);
 
         if (tap_res == "Pass") {
             decrease_count = 0;
@@ -165,26 +171,26 @@ $(document).ready(function () {
         }
 
         // Check if anti-boom is checked AND valid
-        if ($("#anti-boom").is(':checked:not(:disabled)') && current_stars >= 12 && current_stars <= 16) { // Here current_stars is the old one (before update)
+        if (anti_boom_enabled == true) { // Here current_stars is the old one (before update)
             cur_enhance_cost = temp[1]; // Anti-boom cost
         } 
 
-        current_stars = $('#sim-current-stars').text(); // Update to new current_stars
+        new_stars = $('#sim-current-stars').text();
 
         if (decrease_count == 2) {
             res = [100, false, false, false]; // Chance time
         } else {
-            res = get_probabilities(current_stars);
+            res = get_probabilities(new_stars);
         }
         
-        update_sim_display(res, current_stars); // Update probabilities displayed
+        update_sim_display(res, new_stars); // Update probabilities displayed
 
         sim_total_cost += parseInt(cur_enhance_cost);
 
-        temp = get_meso_cost(sim_equip_lvl, current_stars);
+        temp = get_meso_cost(sim_equip_lvl, new_stars);
 
         // Update and display cost (of next enhancement)
-        if ($("#anti-boom").is(':checked:not(:disabled)') && current_stars >= 12 && current_stars <= 16) {
+        if ($("#anti-boom").is(':checked:not(:disabled)') && new_stars >= 12 && new_stars <= 16) {
             $('#sim-cost').text(temp[1].toLocaleString("en-US"));
         }
         else {
@@ -197,8 +203,6 @@ $(document).ready(function () {
 
         $('#sim-enhance-btn').prop('disabled', false); // Enable button
     });
-
-    
 
     function play_sound(sound) {
         // Stop any ongoing sounds
@@ -430,7 +434,7 @@ $(document).ready(function () {
         return [cost, a_cost]
     }
 
-    function tap(current_stars, star_catch, count) {
+    function tap(current_stars, star_catch, anti_boom, count) {
         // Chance time
         if (count == 2) {
             decrease_count = 0; // Reset
@@ -467,7 +471,13 @@ $(document).ready(function () {
             else
                 type_2 = true; // These types can only either decrease or destroy
 
-            if (probability(rate_array[current_stars])) {
+            // Anti boom
+            if (anti_boom == true)
+                var odds = 100;
+            else
+                var odds = rate_array[current_stars];
+            
+            if (probability(odds)) {
                 if (type_1)
                     return "Maintain";
                 if (type_2)
