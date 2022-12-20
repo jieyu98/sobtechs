@@ -217,3 +217,12 @@ caption {
         1px 1px 0 #779922;
     width: 100%;
 }
+
+#sim-next-stars-strike {
+    display: none;
+    color: red;
+}
+
+#sim-next-stars-strike-span {
+    color: white;
+}

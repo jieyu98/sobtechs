@@ -5,18 +5,31 @@ $(document).ready(function () {
 
     var sim_equip_lvl = 200; // Default equipment level is 200
     var sim_starting_stars = 0;
-    var sim_meso_budget = 0;
     var sim_mvp_grade = "None";
     var sim_psc = "No";
     var sim_total_cost = 0;
     var sim_30_disc = false;
     var sim_51015 = false;
     var sim_no_boom = false;
+    var sim_1_plus_1 = false;
     var sim_replacement_cost = 0;
 
     function initialize_sim() {
         $('#sim-current-stars').text(sim_starting_stars);
+
         $('#sim-next-stars').text(sim_starting_stars + 1);
+
+        // Override (if 1+1)
+        if (sim_1_plus_1 == true) {
+            if (sim_starting_stars <= 10) {
+                $("#sim-next-stars-strike").css("display", "inline-block");
+                $("#sim-next-stars-strike-span").text(sim_starting_stars + 1);
+                $('#sim-next-stars').text(sim_starting_stars + 2);
+            }
+        } else {
+            $("#sim-next-stars-strike").css("display", "none");
+        }
+    
         $('#sim-cost').text(get_meso_cost(sim_equip_lvl, sim_starting_stars)[0].toLocaleString("en-US"));
         $('#sim-total-cost').text(sim_total_cost.toLocaleString("en-US"));
 
@@ -31,8 +44,22 @@ $(document).ready(function () {
     var decrease_count = 0;
 
     $("#sim-apply-settings-btn").click(function () {
-        // TODO: TRIVIAL CHECKS
+        // TRIVIAL CHECKS
+        if (parseInt($("#sim-starting-stars").val()) < 0 || parseInt($("#sim-starting-stars").val()) > 24) {
+            alert("Starting stars should be between 0 to 24!");
+            return;
+        }
 
+        if ($("#sim-equip-lvl").val() < 0 || $("#sim-equip-lvl").val() > 250) {
+            alert("Item level should be between 0 to 250!");
+            return;
+        }
+
+        if (parseInt($("#sim-replacement-cost").val()) < 0) {
+            alert("Invalid replacement cost!");
+            return;
+        }
+            
         sim_equip_lvl = $("#sim-equip-lvl").val();
         sim_starting_stars = parseInt($("#sim-starting-stars").val());
         sim_mvp_grade =  $("#sim-mvp-grade").val();
@@ -64,6 +91,12 @@ $(document).ready(function () {
             sim_no_boom = true;
         } else {
             sim_no_boom = false;
+        }
+
+        if ($("#sim-1-plus-1").is(':checked')) {
+            sim_1_plus_1 = true;
+        } else {
+            sim_1_plus_1 = false;
         }
 
         $("#sim-revive-btn").css("display", "none"); // Hide revive button
@@ -145,6 +178,21 @@ $(document).ready(function () {
 
             $('#sim-current-stars').text(parseInt(current_stars) + 1);
             $('#sim-next-stars').text(parseInt(next_stars) + 1);
+
+            $("#sim-next-stars-strike").css("display", "none");
+
+            // Overriding (1 + 1)
+            if (sim_1_plus_1 == true) {
+                if (current_stars <= 10) {
+                    $('#sim-current-stars').text(parseInt(current_stars) + 2);
+                    
+                    if (parseInt(current_stars) + 2 <= 10) {
+                        $("#sim-next-stars-strike").css("display", "inline-block");
+                        $("#sim-next-stars-strike-span").text(parseInt(current_stars) + 3);
+                        $('#sim-next-stars').text(parseInt(current_stars) + 4);  
+                    }         
+                }
+            }
 
             $("#sim-success-image").fadeIn("fast", function () {
                 $("#sim-success-image").fadeOut(1000);
@@ -345,47 +393,6 @@ $(document).ready(function () {
     }
 
     ////////////////
-
-    $("#star-forcing-form").on('submit', function (e) {
-        e.preventDefault();
-    });
-
-    $("#calculate-btn").click(function () {
-        // Trivial checks
-
-        var equip_level = $("#itemLevel").val();
-        var current_stars = $("#currentStars").val();
-        var target_stars = $("#targetStars").val();
-        var total_meso_cost = 0;
-        var temp;
-        var star_catch;
-
-        // Check if star catch is enabled
-        temp = $("#starCatch").val()
-        if (temp == 0)
-            star_catch = true;
-        else
-            star_catch = false;
-
-        while (current_stars != target_stars) {
-            console.log("Meso cost:", get_meso_cost(equip_level, current_stars));
-            total_meso_cost += get_meso_cost(equip_level, current_stars);
-
-            tap_res = tap(current_stars, star_catch);
-
-            if (tap_res == "Pass") {
-                current_stars++;
-            } else if (tap_res == "Decrease") {
-                current_stars--;
-            } else if (tap_res == "Maintain") {
-                console.log("Maintained");
-            }
-        }
-
-        console.log("Finished. Final stars: ", current_stars);
-        console.log("Total mesos used: ", total_meso_cost);
-        $('#tierChance').text(total_meso_cost.toLocaleString("en-US"));
-    });
 
     function get_meso_cost(equip_level, current_stars) {
         equip_level = math.round(equip_level / 10) * 10; // Equip Level is rounded down to the nearest 10 levels.
