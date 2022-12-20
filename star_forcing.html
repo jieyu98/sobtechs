@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>SOBTECHS | Star Forcing </title>
+    <title>SOBTECHS | Star Force Simulator </title>
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
@@ -127,7 +127,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="cubing.html">Cubing</a>
                             <a class="dropdown-item" href="tracing.html">Spell Tracing</a>
-                            <a class="dropdown-item" href="#">Star Forcing</a>
+                            <a class="dropdown-item" href="#">Star Force Simulator</a>
                         </div>
                     </li>
                 </ul>
@@ -136,7 +136,7 @@
         <div class="container py-4">
             <div class="row mb-4 pb-4 border-bottom">
                 <div class="col-sm-12 pb-3">
-                    <h5>Star Forcing Simulator</h5>
+                    <h5>Star Force Simulator</h5>
                 </div>
                 <!-- Simulator GUI -->
                 <div class="col-sm-12 col-md-6 offset-md-3">
@@ -247,187 +247,6 @@
                     </button>
                 </div>
             </div>
-            <!-- <div class="row mb-4 pb-4 border-bottom">
-                <div class="col-sm-12 pb-3">
-                    <h5>Star Forcing Calculator</h5>
-                </div>
-                <div class="col-sm-12">
-                    <form id="star-forcing-form">
-                        <div class="form-group row pb-3">
-                            <div class="col-sm-12">
-                                <h6>Equipment Information</h6>
-                            </div>
-                            <div class="col-sm-12 col-md-4">
-                                <label for="itemLevel">Item Level</label>
-                                <input type="number" class="form-control" id="itemLevel" value="200">
-                            </div>
-                            <div class="col-sm-12 col-md-4">
-                                <label for="itemType">Item Type</label>
-                                <select class="form-control" id="itemType" disabled>
-                                    <option value="0">Normal</option>
-                                    <option value="1">Tyrant</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group pb-3">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <h6>Enhancement Options</h6>
-                                </div>
-                                <div class="col-sm-12 col-md-4">
-                                    <label for="starCatch">Star Catch</label>
-                                    <select class="form-control" id="starCatch">
-                                        <option value="0">Yes (+5% Multiplier)</option>
-                                        <option value="1">No</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-12 col-md-4">
-                                    <label for="safeguard">Safeguard (12-17 Stars)</label>
-                                    <select class="form-control" id="safeguard">
-                                        <option value="0">Yes</option>
-                                        <option value="1" selected>No</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4">
-                                    <label for="currentStars">Current Stars</label>
-                                    <input type="number" class="form-control" id="currentStars" value="0">
-                                </div>
-                                <div class="col-sm-12 col-md-4">
-                                    <label for="targetStars">Target Stars</label>
-                                    <input type="number" class="form-control" id="targetStars" value="22">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group pb-3">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <h6>Additional Information</h6>
-                                </div>
-                                <div class="col-sm-12 col-md-4">
-                                    <label for="mvpGrade">MVP Grade</label>
-                                    <select class="form-control" id="mvpGrade">
-                                        <option value="0">None</option>
-                                        <option value="1">Silver (3% discount)</option>
-                                        <option value="2">Gold (5% discount)</option>
-                                        <option value="3">Diamond (10% discount)</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-12 col-md-4">
-                                    <label for="mvpGrade">Premium Service</label>
-                                    <select class="form-control" id="mvpGrade">
-                                        <option value="0">Yes (5% Discount)</option>
-                                        <option value="1">No</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-12 col-md-4">
-                                    <label for="recoveryCost">Cost of Item Replacement</label>
-                                    <input type="number" class="form-control" id="recoveryCost" value="0">
-                                    <small class="form-text">In case of destruction (boom).</small>
-                                </div>
-                            </div>
-                            <div class="form-check" id="save-form">
-                                <input class="form-check-input" type="checkbox" value="" id="saveInfo" checked>
-                                <label class="form-check-label" for="saveInfo">
-                                    Remember my MVP and Premium Service information
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-12">
-                                <h6>Events Selection</h6>
-                            </div>
-                            <div class="col-sm-12 col-md-4">
-                                <div class="form-check" id="51015-form">
-                                    <input class="form-check-input" type="checkbox" value="" id="51015">
-                                    <label class="form-check-label" for="51015">
-                                        100% success at 5, 10, 15 stars
-                                    </label>
-                                </div>
-                                <div class="form-check" id="30Disc-form">
-                                    <input class="form-check-input" type="checkbox" value="" id="30Disc">
-                                    <label class="form-check-label" for="30Disc">
-                                        30% discount
-                                    </label>
-                                </div>
-                                <div class="form-check" id="1Plus1-form">
-                                    <input class="form-check-input" type="checkbox" value="" id="1Plus1">
-                                    <label class="form-check-label" for="1Plus1">
-                                        1+1 below 10 stars
-                                    </label>
-                                </div>
-                                <div class="form-check" id="noBoom-form">
-                                    <input class="form-check-input" type="checkbox" value="" id="noBoom">
-                                    <label class="form-check-label" for="noBoom">
-                                        No boom up to 15 stars
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-                <div class="col-sm-12 mb-4">
-                    <div class="custom-border">
-                        <div class="results-block" style="overflow: hidden;">
-                            Simulation Results:
-                            <strong>
-                                <p id="tierChance">-</p>
-                            </strong>
-                            <button type="submit" class="btn btn-cube btn-sm float-right" id="calculate-btn">
-                                <span>Calculate</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-7 d-none table-responsive" id="transitionMatrix">
-                    <h6>Transition Matrix (After <span id="trials">20</span> trials)</h6>
-                    <table class="table table-bordered table-light mb-0" id="markov-table">
-                        <thead>
-                            <tr>
-                                <th scope="col" style="width: 20%;">#</th>
-                                <th scope="col" style="width: 20%;">R</th>
-                                <th scope="col" style="width: 20%;">E</th>
-                                <th scope="col" style="width: 20%;">U</th>
-                                <th scope="col" style="width: 20%;">L</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">R</th>
-                                <td id="00">10%</td>
-                                <td id="01">10%</td>
-                                <td id="02">10%</td>
-                                <td id="03">10%</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">E</th>
-                                <td id="10">10%</td>
-                                <td id="11">10%</td>
-                                <td id="12">10%</td>
-                                <td id="13">10%</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">U</th>
-                                <td id="20">10%</td>
-                                <td id="21">10%</td>
-                                <td id="22">10%</td>
-                                <td id="23">10%</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">L</th>
-                                <td id="30">10%</td>
-                                <td id="31">10%</td>
-                                <td id="32">10%</td>
-                                <td id="33">10%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <small>Row: Current tier. Column: Desired tier. Computed using Markov
-                        chain.</small>
-                </div>
-            </div> -->
             <div>
                 <img class="img-responsive mx-auto d-block mb-2" src="assets/img/others/me.png" />
                 <small>
