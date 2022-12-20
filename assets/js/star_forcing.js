@@ -11,6 +11,7 @@ $(document).ready(function () {
     var sim_total_cost = 0;
     var sim_30_disc = false;
     var sim_51015 = false;
+    var sim_no_boom = false;
     var sim_replacement_cost = 0;
 
     function initialize_sim() {
@@ -57,6 +58,12 @@ $(document).ready(function () {
             sim_51015 = true;
         } else {
             sim_51015 = false;
+        }
+
+        if ($("#sim-no-boom").is(':checked')) {
+            sim_no_boom = true;
+        } else {
+            sim_no_boom = false;
         }
 
         $("#sim-revive-btn").css("display", "none"); // Hide revive button
@@ -283,10 +290,13 @@ $(document).ready(function () {
 
         // Check if "ANTI-DESTRUCTION" option should be enabled or disabled
         if (current_stars >= 12 && current_stars <= 16) {
-            if (sim_51015 == true && current_stars == 15)
+            if (sim_51015 == true && current_stars == 15) // 5, 10 will be disabled anyway, so only need check 15
                 $('#anti-boom').prop('disabled', true);
             else 
                 $('#anti-boom').prop('disabled', false);
+
+            if (sim_no_boom == true && (current_stars == 12 || current_stars == 13 || current_stars == 14))
+                $('#anti-boom').prop('disabled', true);
         } else {
             $('#anti-boom').prop('disabled', true);
         }
@@ -311,6 +321,20 @@ $(document).ready(function () {
         maintain_rate = maintain_array[star];
         decrease_rate = decrease_array[star];
         destroy_rate = destroy_array[star];
+
+        // Override (for no boom - 12, 13, 14 stars)
+        if (sim_no_boom == true) {
+            if (star == 12) {
+                decrease_rate = 60;
+                destroy_rate = false;
+            } else if (star == 13) {
+                decrease_rate = 65;
+                destroy_rate = false;
+            } else if (star == 14) {
+                decrease_rate = 70;
+                destroy_rate = false;
+            }
+        }
 
         // 5, 10, 15
         if (sim_51015 == true && (star == 5 || star == 10 || star == 15)) {
@@ -474,11 +498,18 @@ $(document).ready(function () {
             else
                 type_2 = true; // These types can only either decrease or destroy
 
-            // Anti boom
+            
+            var odds = 0;
+            
+            // Anti boom checked
             if (anti_boom == true)
-                var odds = 100;
+                odds = 100;
             else
-                var odds = rate_array[current_stars];
+                odds = rate_array[current_stars];
+
+            // No boom up to 15 (12, 13, 14 stars)
+            if (sim_no_boom == true && (current_stars == 12 || current_stars == 13 || current_stars == 14))
+                odds = 100;
             
             if (probability(odds)) {
                 if (type_1)
