@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     $("#cubing-form").on('submit', function (e) {
         e.preventDefault();
     });
@@ -16,7 +16,7 @@ $(document).ready(function () {
         ];
 
         // Check if DMT is checked
-        if($("#DMT").is(':checked')) {
+        if ($("#DMT").is(':checked')) {
             tiering_matrix = math.multiply(tiering_matrix, 2);
         }
 
@@ -39,7 +39,7 @@ $(document).ready(function () {
         // Get cube and number of cubes
         var cube_selected = $("#cubeSelect").val();
         var no_of_cubes = $("#noOfCubes").val();
-        
+
         // Create transition matrix
         var transition_matrix = [...Array(4)].map(e => Array(4).fill(0));
 
@@ -47,20 +47,20 @@ $(document).ready(function () {
             for (var j = 0; j < 4; j++) {
                 if (i == j) { // Same tier (Failed)
                     transition_matrix[i][j] = 1 - tiering_matrix[cube_selected][i];
-                } 
+                }
 
-                if (j == i+1) { // One tier higher (Success)
+                if (j == i + 1) { // One tier higher (Success)
                     transition_matrix[i][j] = tiering_matrix[cube_selected][i];
                 }
             }
         }
-        
+
         // Raise matrix to the power of number of cubes
         result_matrix = math.pow(transition_matrix, no_of_cubes);
 
         result_tier_chance = math.round(result_matrix[current_tier][desired_tier] * 100 * 100) / 100;
 
-        $('#tierChance').text(result_tier_chance+'%');
+        $('#tierChance').text(result_tier_chance + '%');
 
         // Display result matrix
         if ($("#transitionMatrix").hasClass("d-none")) {
@@ -70,19 +70,19 @@ $(document).ready(function () {
 
         for (var i = 0; i < 4; i++) {
             for (var j = 0; j < 4; j++) {
-                $('#'+i+j).text(math.round(result_matrix[i][j] * 100 * 100) / 100 + '%');
+                $('#' + i + j).text(math.round(result_matrix[i][j] * 100 * 100) / 100 + '%');
 
                 // Remove previous highlight if any
-                if ($('#'+i+j).hasClass("table-success"))
-                    $('#'+i+j).removeClass("table-success");
+                if ($('#' + i + j).hasClass("table-success"))
+                    $('#' + i + j).removeClass("table-success");
             }
         }
 
         // Highlight cell
-        $('#'+current_tier+desired_tier).addClass("table-success");
+        $('#' + current_tier + desired_tier).addClass("table-success");
 
         $('#trials').text(no_of_cubes);
-        
+
     });
 })
 
