@@ -199,7 +199,9 @@ caption {
     font-size: 0.95rem;
 }
 
-#sim-success-image, #sim-fail-image, #sim-destroyed-image {
+#sim-success-image,
+#sim-fail-image,
+#sim-destroyed-image {
     display: none;
 }
 
