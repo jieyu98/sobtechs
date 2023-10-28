@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>SOBTECHS | MapleStory DMT Tracker for MapleSEA</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Maplestory DMT Tracker for MapleSEA" />
+
+    <meta property="og:title" content="SOBTECHS | Maplestory DMT Tracker for MapleSEA" />
+    <meta property="og:description" content="Maplestory DMT Tracker for MapleSEA." />
+    <meta property="og:image" content="https://www.sobtechs.dev/assets/img/others/logo_with_name.png" />
+
+    <link rel="canonical" href="https://www.sobtechs.dev/dmt.html">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <!-- Custom Page CSS -->
+    <link href="assets/css/dmt.css" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD516VS960"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-DD516VS960');
+    </script>
+</head>
+
+<body>
+    <main class="background">
+        <!-- Navbar -->
+        <nav class="container navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/others/logo_with_name.png" width="80" height="80" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Maplestory
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="cubing.html">Cubing</a>
+                            <a class="dropdown-item" href="tracing.html">Spell Tracing</a>
+                            <a class="dropdown-item" href="star_forcing.html">Star Force Simulator</a>
+                            <a class="dropdown-item" href="#">DMT Tracker</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="cases.html" id="navbarDropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Counter-Strike
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Cases</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Support
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" target="_blank" href="https://ko-fi.com/sobtechs">Ko-fi</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Content -->
+        <div class="container py-4">
+            <header class="pb-3 mb-4">
+                <h1>MapleStory DMT Tracker for MapleSEA</h1>
+            </header>
+            <!-- Info -->
+            <div class="translucent-black-bg text-center mb-4">
+                <h2>
+                    It has been
+                    <span id="days-since-last-dmt"></span>
+                    days since the last DMT on
+                    <span id="last-dmt-date"></span>.
+                </h2>
+                <small>The probability of increasing your Potential Tier while resetting your Item
+                    Potential during
+                    Double
+                    Miracle Time is increased by 2x.</small>
+                <p class="mt-4 mb-1">
+                    Average interval: <span id="average-interval"></span>
+                    <br />
+                    Median interval: <span id="median-interval"></span>
+                    <br />
+                    Range: <span id="range-interval"></span>
+                    <br />
+                </p>
+                <small>Interval refers to the <b><u>number of days</u></b> between consecutive DMT events.</small>
+            </div>
+            <!-- 2024 Table -->
+            <!-- <div class="row mb-4 border-bottom">
+                <div class="col-sm-12 pb-3">
+                    <h5 class="pb-3">Year 2024</h5>
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Days Since Last DMT</th>
+                            </tr>
+                        </thead>
+                        <tbody id="2024-table"></tbody>
+                    </table>
+                </div>
+            </div> -->
+            <!-- 2023 Table -->
+            <div class="row mb-4 border-bottom">
+                <div class="col-sm-12 pb-3">
+                    <h5 class="pb-3">Year 2023</h5>
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Days Since Last DMT</th>
+                            </tr>
+                        </thead>
+                        <tbody id="2023-table"></tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- 2022 Table -->
+            <div class="row mb-4 border-bottom">
+                <div class="col-sm-12 pb-3">
+                    <h5 class="pb-3">Year 2022</h5>
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Days Since Last DMT</th>
+                            </tr>
+                        </thead>
+                        <tbody id="2022-table"></tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- 2021 Table -->
+            <div class="row mb-4 border-bottom">
+                <div class="col-sm-12 pb-3">
+                    <h5 class="pb-3">Year 2021</h5>
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Days Since Last DMT</th>
+                            </tr>
+                        </thead>
+                        <tbody id="2021-table"></tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- 2020 Table -->
+            <div class="row mb-4 border-bottom">
+                <div class="col-sm-12 pb-3">
+                    <h5 class="pb-3">Year 2020</h5>
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Days Since Last DMT</th>
+                            </tr>
+                        </thead>
+                        <tbody id="2020-table"></tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Footer -->
+            <div>
+                <img class="img-responsive mx-auto d-block mb-2" src="assets/img/others/me.png" />
+                <small>
+                    <p class="text-center">
+                        Made by Sobful, Aquila (MapleSEA)<br />
+                        © SOBTECHS 2023
+                    </p>
+                </small>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.1.0/math.js"
+        integrity="sha512-I3BR04+2bI75SNyY+c6cJWCUuseVbX1Zn952KS2Lw6+VKuZSA4tXkX5Py+T8N2I9SMT2+iQkE6eSISbhNxBMmw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/dmt.js"></script>
+</body>
+
+</html>
