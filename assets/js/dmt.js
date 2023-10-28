@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    // Load navbar
+    $("#navbar").load("assets/components/navbar.html");
+
     $.getJSON('dmt_data.json', function (data) {
         let previousDMTDate = null;
         let minDaysSince = null;

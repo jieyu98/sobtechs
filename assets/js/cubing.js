@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    // Load navbar
+    $("#navbar").load("assets/components/navbar.html");
 
     $("#cubing-form").on('submit', function (e) {
         e.preventDefault();

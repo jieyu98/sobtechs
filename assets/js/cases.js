@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    // Load navbar
+    $("#navbar").load("assets/components/navbar.html");
 
     $("#cases-form").on('submit', function (e) {
         e.preventDefault();

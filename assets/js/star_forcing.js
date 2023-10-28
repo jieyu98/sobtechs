@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    // Load navbar
+    $("#navbar").load("assets/components/navbar.html");
+
     $("#sim-form").on('submit', function (e) {
         e.preventDefault();
     });
