@@ -36,7 +36,7 @@ $(document).ready(function () {
                     <td>${daysSince}</td>
                 </tr>
             `;
-            $(`#${item.year}-table`).append(row);
+            $(`#${item.year}-table`).prepend(row);
 
             // Set the current DMT date as the previous DMT date for the next iteration
             previousDMTDate = currentDMTDate;
