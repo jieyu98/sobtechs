@@ -55,11 +55,7 @@ $(document).ready(function () {
 
         // Inno rate
         if (inno_type == 0) {
-            if ($("#fever").is(':checked'))
-                inno_rate = 45;
-            else
-                inno_rate = 30;
-
+            inno_rate = 100;
             using_spell_trace_inno = true;
         } else if (inno_type == 1) {
             inno_rate = 20;
@@ -75,11 +71,7 @@ $(document).ready(function () {
 
         // CSS rate
         if (css_type == 0) {
-            if ($("#fever").is(':checked'))
-                css_rate = 10;
-            else
-                css_rate = 5;
-
+            css_rate = 100;
             using_spell_trace_css = true;
         } else if (css_type == 1) {
             css_rate = 1;
@@ -194,9 +186,9 @@ $(document).ready(function () {
 
                         if (using_spell_trace_inno) { // Using spell trace inno
                             if ($("#discount").is(':checked')) {
-                                spell_trace_count += 2500;
+                                spell_trace_count += 6000;
                             } else {
-                                spell_trace_count += 5000;
+                                spell_trace_count += 12000;
                             }
                         }
 
@@ -228,9 +220,9 @@ $(document).ready(function () {
 
                     if (using_spell_trace_css) {
                         if ($("#discount").is(':checked'))
-                            spell_trace_count += 1000;
+                            spell_trace_count += 10000;
                         else
-                            spell_trace_count += 2000;
+                            spell_trace_count += 20000;
                     }
 
                     if (probability(css_rate)) { // CSS pass
