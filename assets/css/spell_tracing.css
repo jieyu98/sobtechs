@@ -72,3 +72,11 @@ input[type="number"] {
 caption {
     color: white;
 }
+
+.card {
+    color: black;
+}
+
+.col-sm-12 {
+    margin-bottom: 10px;
+}

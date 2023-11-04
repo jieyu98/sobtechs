@@ -60,144 +60,159 @@
 				<div class="col-sm-12">
 					<form id="tracing-form">
 						<!-- Equipment Information -->
-						<div class="form-group row pb-3">
-							<div class="col-sm-12">
-								<h6>Equipment Information</h6>
+						<div class="card form-group">
+							<div class="card-header">
+								Equipment Information
 							</div>
-							<div class="col-sm-12 col-md-4">
-								<label for="totalSlots">Total Number of Slots</label>
-								<input type="number" class="form-control" id="totalSlots" value="10" min="1">
-							</div>
-							<div class="col-sm-12 col-md-4">
-								<label for="noOfSuccess">No. of Successful Enhancements</label>
-								<input type="number" class="form-control" id="noOfSuccess" value="0" min="0">
-							</div>
-							<div class="col-sm-12 col-md-4">
-								<label for="noOfFails">No. of Failed Enhancements</label>
-								<input type="number" class="form-control" id="noOfFails" value="0" min="0">
+							<div class="card-body row">
+								<div class="col-sm-12 col-md-4">
+									<label for="totalSlots">Total Number of Slots</label>
+									<input type="number" class="form-control" id="totalSlots" value="10" min="1">
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label for="noOfSuccess">No. of Successful Enhancements</label>
+									<input type="number" class="form-control" id="noOfSuccess" value="0" min="0">
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label for="noOfFails">No. of Failed Enhancements</label>
+									<input type="number" class="form-control" id="noOfFails" value="0" min="0">
+								</div>
 							</div>
 						</div>
 						<!-- Enhancement Options-->
-						<div class="form-group row">
-							<div class="col-sm-12">
-								<h6>Enhancement Options</h6>
+						<div class="card form-group">
+							<div class="card-header">
+								Enhancement Options
 							</div>
-							<div class="col-sm-12 col-md-4">
-								<label for="successRate">Spell Trace Success Rate</label>
-								<select class="form-control" id="successRate">
-									<option value="15">15%</option>
-									<option value="30">30%</option>
-									<option value="70">70%</option>
-									<option value="100">100%</option>
-								</select>
-							</div>
-							<div class="col-sm-12 col-md-4">
-								<label for="traceCost">Spell Trace Cost per Enhancement</label>
-								<input type="number" class="form-control" id="traceCost" value="1350" min="0">
-								<small class="form-text">Do not include discounts from 50% off event (if any).</small>
-							</div>
-							<div class="col-sm-12 col-md-4">
-								<label for="innoTrigger">Use Inno Scroll Once Fail Count Reaches</label>
-								<input type="number" class="form-control" id="innoTrigger" value="5" min="1">
+							<div class="card-body row">
+								<div class="col-sm-12 col-md-4">
+									<label for="successRate">Spell Trace Success Rate</label>
+									<select class="form-control" id="successRate">
+										<option value="15">15%</option>
+										<option value="30">30%</option>
+										<option value="70">70%</option>
+										<option value="100">100%</option>
+									</select>
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label for="traceCost">Spell Trace Cost per Enhancement</label>
+									<input type="number" class="form-control" id="traceCost" value="1350" min="0">
+									<small class="form-text">Do not include discounts from 50% off event (if
+										any).</small>
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label for="innoTrigger">Use Inno Scroll Once Fail Count Reaches</label>
+									<input type="number" class="form-control" id="innoTrigger" value="5" min="1">
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label for="innoType">Innocence Scroll Type</label>
+									<select class="form-control" id="innoType">
+										<option value="0">30% (From Spell Trace)</option>
+										<option value="1">20% (Normal Scroll)</option>
+										<option value="2">40% (Normal Scroll)</option>
+										<option value="3">50% (Normal Scroll)</option>
+										<option value="4">60% (Normal Scroll)</option>
+										<option value="5">70% (Normal Scroll)</option>
+									</select>
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label for="cssType">Clean Slate Scroll Type</label>
+									<select class="form-control" id="cssType">
+										<option value="0">5% (From Spell Trace)</option>
+										<option value="1">1% (Normal Scroll)</option>
+										<option value="2">3% (Normal Scroll)</option>
+										<option value="3">5% (Normal Scroll)</option>
+										<option value="4">10% (Normal Scroll)</option>
+										<option value="5">20% (Normal Scroll)</option>
+									</select>
+								</div>
 							</div>
 						</div>
-						<div class="form-group row pb-3">
-							<div class="col-sm-12 col-md-4">
-								<label for="innoType">Innocence Scroll Type</label>
-								<select class="form-control" id="innoType">
-									<option value="0">30% (From Spell Trace)</option>
-									<option value="1">20% (Normal Scroll)</option>
-									<option value="2">40% (Normal Scroll)</option>
-									<option value="3">50% (Normal Scroll)</option>
-									<option value="4">60% (Normal Scroll)</option>
-									<option value="5">70% (Normal Scroll)</option>
-								</select>
-							</div>
-							<div class="col-sm-12 col-md-4">
-								<label for="cssType">Clean Slate Scroll Type</label>
-								<select class="form-control" id="cssType">
-									<option value="0">5% (From Spell Trace)</option>
-									<option value="1">1% (Normal Scroll)</option>
-									<option value="2">3% (Normal Scroll)</option>
-									<option value="3">5% (Normal Scroll)</option>
-									<option value="4">10% (Normal Scroll)</option>
-									<option value="5">20% (Normal Scroll)</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<div class="col-sm-12">
-								<h6>Mesos Costs (Optional)</h6>
+						<!-- Mesos Costs -->
+						<div class="card form-group">
+							<div class="card-header">
+								Mesos Costs (Optional)
+								<br />
 								<small>This section is <strong>optional</strong>. You may leave the fields as 0 if you
 									do not want to calculate mesos costs.</small>
 							</div>
-							<div class="col-sm-12 col-md-4">
-								<label for="dilliLvl">Spell Trace Cost (Unit)</label>
-								<input type="number" class="form-control" id="costOfSpellTrace" value="0" min="0">
-							</div>
-							<div class="col-sm-12 col-md-4">
-								<label for="dilliLvl">Innocence Scroll Cost (Unit)</label>
-								<input type="number" class="form-control" id="costOfInno" value="0" min="0">
-								<small class="form-text">Leave this as 0 if you are using spell trace for Inno.</small>
-							</div>
-							<div class="col-sm-12 col-md-4">
-								<label for="dilliLvl">Clean Slate Scroll Cost (Unit)</label>
-								<input type="number" class="form-control" id="costOfCSS" value="0" min="0">
-								<small class="form-text">Leave this as 0 if you are using spell trace for CSS.</small>
+							<div class="card-body row">
+								<div class="col-sm-12 col-md-4">
+									<label for="dilliLvl">Spell Trace Cost (Unit)</label>
+									<input type="number" class="form-control" id="costOfSpellTrace" value="0" min="0">
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label for="dilliLvl">Innocence Scroll Cost (Unit)</label>
+									<input type="number" class="form-control" id="costOfInno" value="0" min="0">
+									<small class="form-text">Leave this as 0 if you are using spell trace for
+										Inno.</small>
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label for="dilliLvl">Clean Slate Scroll Cost (Unit)</label>
+									<input type="number" class="form-control" id="costOfCSS" value="0" min="0">
+									<small class="form-text">Leave this as 0 if you are using spell trace for
+										CSS.</small>
+								</div>
 							</div>
 						</div>
 						<!-- Additional Information -->
-						<div class="form-group row">
-							<div class="col-sm-12">
-								<h6>Additional Information</h6>
+						<div class="card form-group">
+							<div class="card-header">
+								Additional Information
 							</div>
-							<div class="col-sm-12 col-md-4">
-								<label for="dilliLvl">Dilligence Level</label>
-								<input type="number" class="form-control" id="dilliLvl" value="100" min="0" max="100">
-							</div>
-							<div class="col-sm-12 col-md-4">
-								<label for="guildEnhancementLvl">Guild Enhancement Mastery Skill Level</label>
-								<select class="form-control" id="guildEnhancementLvl">
-									<option value="0">Level 0 (+0%)</option>
-									<option value="1">Level 1 (+1%)</option>
-									<option value="2">Level 2 (+2%)</option>
-									<option value="3">Level 3 (+3%)</option>
-									<option value="4" selected>Level 4 (+4%)</option>
-								</select>
-							</div>
-							<div class="col-sm-12 col-md-4">
-								<label for="guildSalvationLvl">Guild Upgrade Salvation Skill Level</label>
-								<select class="form-control" id="guildSalvationLvl">
-									<option value="0">Level 0 (0%)</option>
-									<option value="1">Level 1 (1%)</option>
-									<option value="2">Level 2 (2%)</option>
-									<option value="3">Level 3 (3%)</option>
-									<option value="4" selected>Level 4 (4%)</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<div class="col-sm-12 col-md-4">
-								<label for="noOfSims">No. of Simulation</label>
-								<input type="number" class="form-control" id="noOfSims" value="1000" min="1">
+							<div class="card-body row">
+								<div class="col-sm-12 col-md-4">
+									<label for="dilliLvl">Dilligence Level</label>
+									<input type="number" class="form-control" id="dilliLvl" value="100" min="0"
+										max="100">
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label for="guildEnhancementLvl">Guild Enhancement Mastery Skill Level</label>
+									<select class="form-control" id="guildEnhancementLvl">
+										<option value="0">Level 0 (+0%)</option>
+										<option value="1">Level 1 (+1%)</option>
+										<option value="2">Level 2 (+2%)</option>
+										<option value="3">Level 3 (+3%)</option>
+										<option value="4" selected>Level 4 (+4%)</option>
+									</select>
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label for="guildSalvationLvl">Guild Upgrade Salvation Skill Level</label>
+									<select class="form-control" id="guildSalvationLvl">
+										<option value="0">Level 0 (0%)</option>
+										<option value="1">Level 1 (1%)</option>
+										<option value="2">Level 2 (2%)</option>
+										<option value="3">Level 3 (3%)</option>
+										<option value="4" selected>Level 4 (4%)</option>
+									</select>
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label for="noOfSims">No. of Simulation</label>
+									<input type="number" class="form-control" id="noOfSims" value="1000" min="1">
+								</div>
 							</div>
 						</div>
 						<!-- Events -->
-						<div class="form-group row pb-3">
-							<div class="col-sm-12">
-								<div class="form-check" id="fever-form">
-									<input class="form-check-input" type="checkbox" value="" id="fever">
-									<label class="form-check-label" for="fever">
-										Spell Trace Fever
-									</label>
-								</div>
+						<div class="card form-group">
+							<div class="card-header">
+								Events
 							</div>
-							<div class="col-sm-12 col">
-								<div class="form-check" id="discount-form">
-									<input class="form-check-input" type="checkbox" value="" id="discount">
-									<label class="form-check-label" for="discount">
-										50% off Spell Trace Enhancement Cost
-									</label>
+							<div class="card-body row">
+								<div class="col-sm-12">
+									<div class="form-check" id="fever-form">
+										<input class="form-check-input" type="checkbox" value="" id="fever">
+										<label class="form-check-label" for="fever">
+											Spell Trace Fever
+										</label>
+									</div>
+								</div>
+								<div class="col-sm-12 col">
+									<div class="form-check" id="discount-form">
+										<input class="form-check-input" type="checkbox" value="" id="discount">
+										<label class="form-check-label" for="discount">
+											50% off Spell Trace Enhancement Cost
+										</label>
+									</div>
 								</div>
 							</div>
 						</div>
