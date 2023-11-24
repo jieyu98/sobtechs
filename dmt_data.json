@@ -168,5 +168,10 @@
         "date": "22 Oct",
         "year": 2023,
         "type": "Hat"
+    },
+    {
+        "date": "25 Nov",
+        "year": 2023,
+        "type": "ALL"
     }
 ]
