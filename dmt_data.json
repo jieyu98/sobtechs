@@ -178,5 +178,10 @@
         "date": "25 Dec",
         "year": 2023,
         "type": "Accessories"
+    },
+    {
+        "date": "29 Jan",
+        "year": 2024,
+        "type": "Weapons"
     }
 ]
