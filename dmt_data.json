@@ -203,5 +203,10 @@
         "date": "19 May",
         "year": 2024,
         "type": "Shoes"
+    },
+    {
+        "date": "8 Jun",
+        "year": 2024,
+        "type": "ALL"
     }
 ]
