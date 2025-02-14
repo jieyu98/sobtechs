@@ -223,5 +223,15 @@
         "date": "23 Nov",
         "year": 2024,
         "type": "ALL"
+    },
+    {
+        "date": "25 Dec",
+        "year": 2024,
+        "type": "Accessories"
+    },
+    {
+        "date": "26 Jan",
+        "year": 2025,
+        "type": "Weapons"
     }
 ]
