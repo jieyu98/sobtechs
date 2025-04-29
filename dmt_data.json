@@ -233,5 +233,15 @@
         "date": "26 Jan",
         "year": 2025,
         "type": "Weapons"
+    },
+    {
+        "date": "23 Feb",
+        "year": 2025,
+        "type": "Clothes/Capes"
+    },
+    {
+        "date": "13 Apr",
+        "year": 2025,
+        "type": "Shoes"
     }
 ]
