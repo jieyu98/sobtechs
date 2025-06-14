@@ -34,6 +34,7 @@ $(document).ready(function () {
                     <td>${item.date}</td>
                     <td>${item.type}</td>
                     <td>${daysSince}</td>
+                    <td>${item.event}</td>
                 </tr>
             `;
             $(`#${item.year}-table`).prepend(row);

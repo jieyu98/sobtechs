@@ -2,261 +2,313 @@
     {
         "date": "8 Feb",
         "year": 2020,
-        "type": "Hats"
+        "type": "Hats",
+        "event": "DMT"
     },
     {
         "date": "14 Mar",
         "year": 2020,
-        "type": "ALL"
+        "type": "ALL",
+        "event": "DMT"
     },
     {
         "date": "25 Apr",
         "year": 2020,
-        "type": "Accessories"
+        "type": "Accessories",
+        "event": "DMT"
     },
     {
         "date": "6 June",
         "year": 2020,
-        "type": "ALL"
+        "type": "ALL",
+        "event": "DMT"
     },
     {
         "date": "18 July",
         "year": 2020,
-        "type": "Clothes/Capes"
+        "type": "Clothes/Capes",
+        "event": "DMT"
     },
     {
         "date": "25 July",
         "year": 2020,
-        "type": "Weapons"
+        "type": "Weapons",
+        "event": "DMT"
     },
     {
         "date": "10 Oct",
         "year": 2020,
-        "type": "Hats"
+        "type": "Hats",
+        "event": "DMT"
     },
     {
         "date": "21 Nov",
         "year": 2020,
-        "type": "ALL"
+        "type": "ALL",
+        "event": "DMT"
     },
     {
         "date": "25 Dec",
         "year": 2020,
-        "type": "Accessories"
+        "type": "Accessories",
+        "event": "DMT"
     },
     {
         "date": "27 Mar",
         "year": 2021,
-        "type": "Weapons"
+        "type": "Weapons",
+        "event": "DMT"
     },
     {
         "date": "8 May",
         "year": 2021,
-        "type": "Clothes/Capes"
+        "type": "Clothes/Capes",
+        "event": "DMT"
     },
     {
         "date": "12 June",
         "year": 2021,
-        "type": "ALL"
+        "type": "ALL",
+        "event": "DMT"
     },
     {
         "date": "17 July",
         "year": 2021,
-        "type": "Hats"
+        "type": "Hats",
+        "event": "DMT"
     },
     {
         "date": "24 July",
         "year": 2021,
-        "type": "Weapons"
+        "type": "Weapons",
+        "event": "DMT"
     },
     {
         "date": "4 Dec",
         "year": 2021,
-        "type": "ALL"
+        "type": "ALL",
+        "event": "DMT"
     },
     {
         "date": "25 Dec",
         "year": 2021,
-        "type": "Accessories"
+        "type": "Accessories",
+        "event": "DMT"
     },
     {
         "date": "13 Mar",
         "year": 2022,
-        "type": "Clothes/Capes"
+        "type": "Clothes/Capes",
+        "event": "DMT"
     },
     {
         "date": "19 Mar",
         "year": 2022,
-        "type": "Gloves"
+        "type": "Gloves",
+        "event": "DMT"
     },
     {
         "date": "4 June",
         "year": 2022,
-        "type": "ALL"
+        "type": "ALL",
+        "event": "DMT"
     },
     {
         "date": "23 July",
         "year": 2022,
-        "type": "Accessories"
+        "type": "Accessories",
+        "event": "DMT"
     },
     {
         "date": "6 Aug",
         "year": 2022,
-        "type": "Weapons"
+        "type": "Weapons",
+        "event": "DMT"
     },
     {
         "date": "10 Sept",
         "year": 2022,
-        "type": "Shoes"
+        "type": "Shoes",
+        "event": "DMT"
     },
     {
         "date": "23 Oct",
         "year": 2022,
-        "type": "Hats"
+        "type": "Hats",
+        "event": "DMT"
     },
     {
         "date": "3 Dec",
         "year": 2022,
-        "type": "ALL"
+        "type": "ALL",
+        "event": "DMT"
     },
     {
         "date": "25 Dec",
         "year": 2022,
-        "type": "Accessories"
+        "type": "Accessories",
+        "event": "DMT"
     },
     {
         "date": "22 Jan",
         "year": 2023,
-        "type": "Clothes/Capes"
+        "type": "Clothes/Capes",
+        "event": "DMT"
     },
     {
         "date": "11 Mar",
         "year": 2023,
-        "type": "Gloves"
+        "type": "Gloves",
+        "event": "DMT"
     },
     {
         "date": "25 Mar",
         "year": 2023,
-        "type": "Weapons"
+        "type": "Weapons",
+        "event": "DMT"
     },
     {
         "date": "29 Apr",
         "year": 2023,
-        "type": "Accessories"
+        "type": "Accessories",
+        "event": "DMT"
     },
     {
         "date": "17 June",
         "year": 2023,
-        "type": "ALL"
+        "type": "ALL",
+        "event": "DMT"
     },
     {
         "date": "29 July",
         "year": 2023,
-        "type": "Clothes/Capes"
+        "type": "Clothes/Capes",
+        "event": "DMT"
     },
     {
         "date": "12 Aug",
         "year": 2023,
-        "type": "Shoes"
+        "type": "Shoes",
+        "event": "DMT"
     },
     {
         "date": "10 Sept",
         "year": 2023,
-        "type": "Gloves"
+        "type": "Gloves",
+        "event": "DMT"
     },
     {
         "date": "22 Oct",
         "year": 2023,
-        "type": "Hat"
+        "type": "Hat",
+        "event": "DMT"
     },
     {
         "date": "25 Nov",
         "year": 2023,
-        "type": "ALL"
+        "type": "ALL",
+        "event": "DMT"
     },
     {
         "date": "25 Dec",
         "year": 2023,
-        "type": "Accessories"
+        "type": "Accessories",
+        "event": "DMT"
     },
     {
         "date": "28 Jan",
         "year": 2024,
-        "type": "Weapons"
+        "type": "Weapons",
+        "event": "DMT"
     },
     {
         "date": "24 Mar",
         "year": 2024,
-        "type": "Clothes/Capes"
+        "type": "Clothes/Capes",
+        "event": "DMT"
     },
     {
         "date": "31 Mar",
         "year": 2024,
-        "type": "Gloves"
+        "type": "Gloves",
+        "event": "DMT"
     },
     {
         "date": "28 Apr",
         "year": 2024,
-        "type": "Accessories"
+        "type": "Accessories",
+        "event": "DMT"
     },
     {
         "date": "19 May",
         "year": 2024,
-        "type": "Shoes"
+        "type": "Shoes",
+        "event": "DMT"
     },
     {
         "date": "8 June",
         "year": 2024,
-        "type": "ALL"
+        "type": "ALL",
+        "event": "DMT"
     },
     {
         "date": "3 Aug",
         "year": 2024,
-        "type": "ALL"
+        "type": "ALL",
+        "event": "DMT"
     },
     {
         "date": "12 Oct",
         "year": 2024,
-        "type": "Weapons"
+        "type": "Weapons",
+        "event": "DMT"
     },
     {
         "date": "23 Nov",
         "year": 2024,
-        "type": "ALL"
+        "type": "ALL",
+        "event": "DMT"
     },
     {
         "date": "25 Dec",
         "year": 2024,
-        "type": "Accessories"
+        "type": "Accessories",
+        "event": "DMT"
     },
     {
         "date": "26 Jan",
         "year": 2025,
-        "type": "Weapons"
+        "type": "Weapons",
+        "event": "DMT"
     },
     {
         "date": "23 Feb",
         "year": 2025,
-        "type": "Clothes/Capes"
+        "type": "Clothes/Capes",
+        "event": "HMT"
     },
     {
         "date": "13 Apr",
         "year": 2025,
-        "type": "Shoes"
+        "type": "Shoes",
+        "event": "HMT"
     },
     {
         "date": "4 May",
         "year": 2025,
-        "type": "Accessories"
+        "type": "Accessories",
+        "event": "HMT"
     },
     {
         "date": "11 May",
         "year": 2025,
-        "type": "Gloves"
+        "type": "Gloves",
+        "event": "HMT"
     },
     {
         "date": "14 June",
         "year": 2025,
-        "type": "ALL"
+        "type": "ALL",
+        "event": "HMT"
     }
 ]
