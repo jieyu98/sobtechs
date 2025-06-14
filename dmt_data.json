@@ -248,5 +248,15 @@
         "date": "4 May",
         "year": 2025,
         "type": "Accessories"
+    },
+    {
+        "date": "11 May",
+        "year": 2025,
+        "type": "Gloves"
+    },
+    {
+        "date": "14 June",
+        "year": 2025,
+        "type": "ALL"
     }
 ]
